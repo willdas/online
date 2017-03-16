@@ -10,7 +10,7 @@
 					http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 	<!--设置spring容器的扫描范围，扫描类包，将标注Spring注解的类自动转化Bean，同时完成Bean的注入 -->
-	<context:component-scan base-package="com.common,com.online" />
+	<context:component-scan base-package="com.commons,com.online" />
 	<!--属性资源定位器：加载数据库属性文件 -->
 	<context:property-placeholder location="classpath:jdbc.properties" />
 	<!--开起注解方式的springmvc -->
@@ -28,11 +28,11 @@
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
 		<!-- 自动扫描mapping.xml文件 -->
-		<property name="mapperLocations" value="classpath:/com/online/cms/dao/*.xml"></property>
+		<property name="mapperLocations" value="classpath:/com/online/cms/*/dao/*.xml"></property>
 	</bean>
 	<!-- DAO接口所在包名，Spring会自动查找其下的类 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.online.cms.dao"></property>
+		<property name="basePackage" value="com.online.cms.*.dao"></property>
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
 	</bean>
 	<!-- (事务管理)transaction manager, use JtaTransactionManager for global tx -->
@@ -50,7 +50,7 @@
 		<property name="maxUploadSize" value="-1" /> <!-- 最大文件大小，-1为无限止(-1) -->
 	</bean>
 	<!-- 自定义的spring容器载加工具 -->
-	<bean id="SpringContextUtil" class="com.common.util.SpringContextUtil" />
+	<bean id="SpringContextUtil" class="com.commons.util.SpringContextUtil" />
 	
 	<!-- 开启注解方式aop -->
 	<aop:aspectj-autoproxy />
