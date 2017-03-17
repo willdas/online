@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="../resources/css/bootstrap/bootstrap.css">
 <link rel="stylesheet" href="../resources/css/bootstrap/bootstrap-select.css">
 <link type="text/css" rel="stylesheet" href="../resources/css/jedate/jedate.css">
+<link type="text/css" rel="stylesheet" href="../resources/css/fileInput/fileinput.css">
 <style type="text/css">
 .h3-class {
 	width: 20%;
@@ -72,6 +73,12 @@
 				</div>
 			</div>
 			<div class="form-group">
+				<label class="col-sm-2 control-label">上传文件</label>
+				<div class="col-sm-10">
+					<input id="file_input" type="file" data-show-preview="false">
+				</div>
+			</div>
+			<div class="form-group">
 				<label class="col-sm-2 control-label">出版日期</label>
 				<div class="col-sm-10">
 					<input class="form-control" id="publishDate" type="text"
@@ -97,18 +104,26 @@
 </body>
 <script src="../resources/js/jquery/jquery-2.1.0.js"></script>
 <script src="../resources/js/bootstrap/bootstrap.js"></script>
+<script src="../resources/js/fileInput/fileinput.js"></script>
+<script src="../resources/js/fileInput/zh.js"></script>
 <script type="text/javascript" src="../resources/js/getProjectRootPath.js"></script>
 <script type="text/javascript" src="../resources/js/jedate/jquery.jedate.js"></script>
 <script src="../resources/js/bootstrap/bootstrap-select.js"></script>
 <script src="../resources/js/eBook.js"></script>
-<!-- 日期控件 -->
 <script type="text/javascript">
+	//日期控件
 	$("#publishDate").jeDate({
 		skinCell : "jedategreen",
 		format : "YYYY-MM-DD",
 		isTime : false,
 		zIndex : 100,
 		minDate : "1990-01-01 00:00:00"
-	})
+	});
+	//文件上传
+	$("#file_input").fileinput({
+		language: 'zh',
+        uploadUrl: '#',
+        showUpload : false
+    });
 </script>
 </html>

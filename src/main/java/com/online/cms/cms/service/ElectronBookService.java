@@ -1,10 +1,10 @@
 package com.online.cms.cms.service;
 
 import java.util.List;
-
 import com.online.cms.cms.domain.ElectronBook;
 
-public interface ElectronBookService {
+
+public interface ElectronBookService{
 	
 	public ElectronBook getEBookById(String id);
 	

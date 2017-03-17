@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Login</title>
+<title>登录</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script type="application/x-javascript">
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
@@ -45,7 +45,7 @@
 		<div class="avtar">
 			<img src="../../resources/images/avtar.png" />
 		</div>
-		<form action="<%=basePath%>eBookLogin/loginManagentPage" >
+		<form action="<%=basePath%>eBookLogin/loginManagentPage" method="post">
 			<input type="text" name="username" class="text" value="用户名" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '用户名';}">
 			<input type="password" name="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
 			<input type="submit" value="登录">

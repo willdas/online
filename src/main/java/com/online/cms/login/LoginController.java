@@ -24,7 +24,6 @@ public class LoginController {
 		return "login/login";
 	}
 	
-	
 	/**
 	 * 登录成功并进入后台管理页面
 	 * @return
@@ -37,7 +36,8 @@ public class LoginController {
 			// 登录成功进入后台管理页面
 			return "managePage/backstageManagePage";
 		}else{
-			return "login/login";
+			//登录失败返回登录页面
+			return "redirect:/eBookLogin/eb/loginManagement";
 		}
 	}
 	

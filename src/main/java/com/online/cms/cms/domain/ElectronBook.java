@@ -1,9 +1,16 @@
 package com.online.cms.cms.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class ElectronBook {
-    private String id;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.NumberFormat;
+
+public class ElectronBook implements Serializable{
+   
+	private static final long serialVersionUID = -2373291610872426123L;
+
+	private String id;
 
     private String bookName;
 
@@ -11,10 +18,12 @@ public class ElectronBook {
 
     private String describes;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date publishDate;
 
     private String type;
 
+    @NumberFormat(pattern = "##.##")
     private Double price;
 
     public String getId() {

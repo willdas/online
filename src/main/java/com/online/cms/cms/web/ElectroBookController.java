@@ -1,18 +1,13 @@
 package com.online.cms.cms.web;
 
-import java.text.ParseException;
-import java.util.Date;
-
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.online.cms.cms.domain.ElectronBook;
 import com.online.cms.cms.service.ElectronBookService;
-import com.online.commons.util.DateFormat;
 
 
 /**
@@ -44,23 +39,15 @@ public class ElectroBookController {
 	public String listPage(){
 		return "managePage/showEBook";
 	}
+	
 	/**
 	 * 添加电子书
 	 * @return
 	 */
 	@RequestMapping("/addEBook")
-	public String addEBook(HttpServletRequest request,ElectronBook eBook){
-		try {
-			String price = request.getParameter("price");
-			String date = request.getParameter("publishDate");
-			eBook.setPrice(Double.valueOf(price));
-			eBook.setPublishDate(DateFormat.stringToDate(date));
-			System.out.println("=="+eBook);
-			electronBookService.save(eBook);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		return "managePage/showEBook";
+	@ResponseBody
+	public int addEBook(ElectronBook eBook){
+		return electronBookService.save(eBook);
 	}
 	
 	/**
@@ -70,8 +57,7 @@ public class ElectroBookController {
 	@RequestMapping("/delEBook/{id}")
 	@ResponseBody
 	public void del(@PathVariable("id") String id){
-		int count = electronBookService.delete(id);
-		System.err.println(count);
+		electronBookService.delete(id);
 	}
 	
 	/**
@@ -80,34 +66,44 @@ public class ElectroBookController {
 	 */
 	@RequestMapping("/updateEBook")
 	@ResponseBody
-	public int update(){
-		int count = 0;
-		try {
-			ElectronBook eBook4 = new ElectronBook();
-			eBook4.setId("444");
-			eBook4.setAuthor("KK55");
-			eBook4.setBookName("mySQL");
-			eBook4.setPrice(25.8);
-			eBook4.setType("SQL");
-			Date date = DateFormat.stringToDate("2013-03-22");
-			eBook4.setPublishDate(date);
-			count = electronBookService.update(eBook4);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return count;
+	public int update(ElectronBook eBook){
+		return electronBookService.update(eBook);
 	}
 
 	/**
-	 * 查找电子书
+	 * 查找单个电子书
 	 * @param id
 	 * @return
 	 */
 	@RequestMapping("/getEBook/{id}")
 	@ResponseBody
-	public ElectronBook getEBookById(@PathVariable("id") String id){
+	public String getEBookById(@PathVariable("id") String id,Model model){
 		ElectronBook eBook = electronBookService.getEBookById(id);
-		return eBook;
+		model.addAttribute("eBook", eBook);
+		return "mamager/details";
 	}
+
+	/**
+	 * 分页电子书
+	 * @param pageNum
+	 * @param pageSize
+	 * @param map
+	 * @return
+	 */
+	/*
+	@RequestMapping("/page/getEBooks")
+	public String getEBook(Integer pageNum,Integer pageSize,Map<String,Object> map){
+		System.out.println("sssss");
+		pageNum = pageNum == null ? 1 : pageNum;
+		pageSize = pageSize == null ? 10 : pageSize;
+		PageHelper.startPage(pageNum,pageSize);
+		List<ElectronBook> listEBooks = electroBookService.findAll();
+		PageInfo<ElectronBook> eBookPage = UniversalPage.pageInfo(listEBooks);
+		map.put("total",eBookPage.getPages());
+		map.put("pageNum",eBookPage.getPageNum());
+		map.put("eBookList",eBookPage.getList());
+		
+		return "jsp/managePage/showEBooks.jspmanagePage/showEBooks.jsp";
+	}*/
 
 }

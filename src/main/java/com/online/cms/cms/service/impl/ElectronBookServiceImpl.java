@@ -1,7 +1,6 @@
 package com.online.cms.cms.service.impl;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -9,9 +8,10 @@ import com.online.cms.cms.dao.ElectronBookMapper;
 import com.online.cms.cms.domain.ElectronBook;
 import com.online.cms.cms.service.ElectronBookService;
 
+
 @Service
 @Transactional
-public class ElectronBookServiceImpl implements ElectronBookService {
+public class ElectronBookServiceImpl implements ElectronBookService{
 
 	@Autowired
 	private ElectronBookMapper electronBookMapper;
