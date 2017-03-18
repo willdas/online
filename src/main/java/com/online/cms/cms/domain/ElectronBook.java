@@ -6,6 +6,11 @@ import java.util.Date;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 
+/**
+ * 电子书实体类
+ * @author willdas
+ *
+ */
 public class ElectronBook implements Serializable{
    
 	private static final long serialVersionUID = -2373291610872426123L;
@@ -17,6 +22,10 @@ public class ElectronBook implements Serializable{
     private String author;
 
     private String describes;
+    
+    private String filePath;
+    
+    private String fileUrl;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date publishDate;
@@ -81,11 +90,28 @@ public class ElectronBook implements Serializable{
     public void setPrice(Double price) {
         this.price = price;
     }
+    
+    public String getFilePath() {
+		return filePath;
+	}
+
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
+
+	public String getFileUrl() {
+		return fileUrl;
+	}
+
+	public void setFileUrl(String fileUrl) {
+		this.fileUrl = fileUrl;
+	}
 
 	@Override
 	public String toString() {
 		return "ElectronBook [id=" + id + ", bookName=" + bookName + ", author=" + author + ", describes=" + describes
-				+ ", publishDate=" + publishDate + ", type=" + type + ", price=" + price + "]";
+				+ ", filePath=" + filePath + ", fileUrl=" + fileUrl + ", publishDate=" + publishDate + ", type=" + type
+				+ ", price=" + price + "]";
 	}
 
 	@Override
@@ -95,6 +121,8 @@ public class ElectronBook implements Serializable{
 		result = prime * result + ((author == null) ? 0 : author.hashCode());
 		result = prime * result + ((bookName == null) ? 0 : bookName.hashCode());
 		result = prime * result + ((describes == null) ? 0 : describes.hashCode());
+		result = prime * result + ((filePath == null) ? 0 : filePath.hashCode());
+		result = prime * result + ((fileUrl == null) ? 0 : fileUrl.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((price == null) ? 0 : price.hashCode());
 		result = prime * result + ((publishDate == null) ? 0 : publishDate.hashCode());
@@ -126,6 +154,16 @@ public class ElectronBook implements Serializable{
 				return false;
 		} else if (!describes.equals(other.describes))
 			return false;
+		if (filePath == null) {
+			if (other.filePath != null)
+				return false;
+		} else if (!filePath.equals(other.filePath))
+			return false;
+		if (fileUrl == null) {
+			if (other.fileUrl != null)
+				return false;
+		} else if (!fileUrl.equals(other.fileUrl))
+			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -148,5 +186,6 @@ public class ElectronBook implements Serializable{
 			return false;
 		return true;
 	}
+
 
 }

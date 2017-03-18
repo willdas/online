@@ -7,6 +7,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.online.cms.cms.domain.ElectronBook;
 import com.online.cms.cms.service.ElectronBookService;
+
+import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import org.apache.log4j.Logger;
@@ -30,7 +32,7 @@ public class TestDemo {
 		eBook.setPrice(23.7);
 		eBook.setType("HTML");
 		eBook.setPublishDate(dateFormat.parse("2014-03-22"));
-		electronBookService.save(eBook);
+		//electronBookService.save(eBook,filePdf);
 	}
 	
 	@Test

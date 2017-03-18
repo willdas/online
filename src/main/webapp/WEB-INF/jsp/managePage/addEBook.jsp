@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,25 +34,25 @@
 <body>
 	<h3 class="h3-class">添加电子书</h3>
 	<div class="div-top">
-		<div class="form-horizontal" role="form">
+		<form class="form-horizontal" role="form" action="<%=basePath%>eBook/addEBook" method="post" enctype="multipart/form-data">
 			<div class="form-group">
 				<label class="col-sm-2 control-label">编号</label>
 				<div class="col-sm-10">
-					<input class="form-control" id="bookNum" type="text"
+					<input class="form-control" id="bookNum" type="text" name="id"
 						placeholder="请输入编号">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-2 control-label">书名</label>
 				<div class="col-sm-10">
-					<input class="form-control" id="bookName" type="text"
+					<input class="form-control" id="bookName" type="text" name="bookName"
 						placeholder="请输入书名">
 				</div>
 			</div>
 			<div class="form-group">
-				  <label for="basic" class="col-lg-2 control-label">类型</label>
-				  <div class="col-lg-10">
-				    <select id="selectType" class="selectpicker show-tick form-control" data-live-search="true">
+				  <label class="col-sm-2 control-label">类型</label>
+				  <div class="col-sm-10">
+				  <select class="selectpicker show-tick form-control" data-live-search="true" id="selectType" name="type">
 					      <option>请选择类型</option>
 					      <option>JAVA</option>
 					      <option>HTML</option>
@@ -61,34 +65,34 @@
 			<div class="form-group">
 				<label class="col-sm-2 control-label">作者</label>
 				<div class="col-sm-10">
-					<input class="form-control" id="author" type="text"
+					<input class="form-control" id="author" type="text" name="author"
 						placeholder="本书作者">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-2 control-label">价格</label>
 				<div class="col-sm-10">
-					<input class="form-control" id="price" type="text"
+					<input class="form-control" id="price" type="text" name="price"
 						placeholder="本书价格">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-2 control-label">上传文件</label>
 				<div class="col-sm-10">
-					<input id="file_input" type="file" data-show-preview="false">
+					<input id="file_input" name="filePdf" type="file" data-show-preview="false">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-2 control-label">出版日期</label>
 				<div class="col-sm-10">
-					<input class="form-control" id="publishDate" type="text"
+					<input class="form-control" id="publishDate" type="text" name="publishDate"
 						placeholder="请选择出版日期">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-2 control-label">描述</label>
 				<div class="col-sm-10">
-					<textarea class="form-control" id="describes" rows="3"
+					<textarea class="form-control" id="describes" rows="3" name="describes"
 						placeholder="请输入本书的简介"></textarea>
 				</div>
 			</div>
@@ -99,7 +103,7 @@
 					<button id="reset" class="btn btn-default">清空</button>
 				</div>
 			</div>
-		</div>
+		</form>
 	</div>
 </body>
 <script src="../resources/js/jquery/jquery-2.1.0.js"></script>
@@ -109,7 +113,6 @@
 <script type="text/javascript" src="../resources/js/getProjectRootPath.js"></script>
 <script type="text/javascript" src="../resources/js/jedate/jquery.jedate.js"></script>
 <script src="../resources/js/bootstrap/bootstrap-select.js"></script>
-<script src="../resources/js/eBook.js"></script>
 <script type="text/javascript">
 	//日期控件
 	$("#publishDate").jeDate({
@@ -119,10 +122,9 @@
 		zIndex : 100,
 		minDate : "1990-01-01 00:00:00"
 	});
-	//文件上传
+	//上传文件
 	$("#file_input").fileinput({
 		language: 'zh',
-        uploadUrl: '#',
         showUpload : false
     });
 </script>

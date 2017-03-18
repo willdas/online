@@ -6,6 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+
 import com.online.cms.cms.domain.ElectronBook;
 import com.online.cms.cms.service.ElectronBookService;
 
@@ -45,9 +47,9 @@ public class ElectroBookController {
 	 * @return
 	 */
 	@RequestMapping("/addEBook")
-	@ResponseBody
-	public int addEBook(ElectronBook eBook){
-		return electronBookService.save(eBook);
+	public String addEBook(ElectronBook eBook,MultipartFile filePdf){
+		electronBookService.save(eBook,filePdf);
+		return "redirect:/eBook/listEBook";
 	}
 	
 	/**
