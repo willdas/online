@@ -17,7 +17,7 @@
 	}
 	/* 显示电子书 */
 	function showEBook(obj){
-		var showUrl = getRootPath()+"/eBook/listEBook";
+		var showUrl = getRootPath()+"/eBook/page/getEBooks"; 
 		obj.href = showUrl;
 	}
 </script>

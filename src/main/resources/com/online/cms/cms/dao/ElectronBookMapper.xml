@@ -11,6 +11,7 @@
     <result column="price" property="price" jdbcType="DOUBLE" />
     <result column="file_path" property="filePath" jdbcType="VARCHAR" />
     <result column="file_url" property="fileUrl" jdbcType="VARCHAR" />
+    <result column="buy_link" property="buyLink" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -71,8 +72,12 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, book_name, author, describes, publish_date, type, price, file_path, file_url
+    id, book_name, author, describes, publish_date, type, price, file_path, file_url, buy_link
   </sql>
+  <select id="findAll" resultMap="BaseResultMap">
+  	 select id, book_name, author, describes, publish_date, type, price, file_path, file_url, buy_link 
+  	 from books 
+  </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
@@ -86,10 +91,10 @@
   <insert id="insert" parameterType="com.online.cms.cms.domain.ElectronBook" >
     insert into books (id, book_name, author, 
       describes, publish_date, type, 
-      price,file_path,file_url)
+      price,file_path,file_url,buy_link)
     values (#{id,jdbcType=VARCHAR}, #{bookName,jdbcType=VARCHAR}, #{author,jdbcType=VARCHAR}, 
       #{describes,jdbcType=VARCHAR}, #{publishDate,jdbcType=DATE}, #{type,jdbcType=VARCHAR}, 
-      #{price,jdbcType=DOUBLE}, #{filePath,jdbcType=VARCHAR}, #{fileUrl,jdbcType=VARCHAR})
+      #{price,jdbcType=DOUBLE}, #{filePath,jdbcType=VARCHAR}, #{fileUrl,jdbcType=VARCHAR}, #{buyLink,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.online.cms.cms.domain.ElectronBook" >
     insert into books
@@ -121,6 +126,9 @@
       <if test="fileUrl != null" >
         file_url,
       </if>
+      <if test="fileUrl != null" >
+        buy_link,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -147,8 +155,11 @@
        <if test="type != null" >
         #{filePath,jdbcType=VARCHAR},
       </if>
-       <if test="type != null" >
+      <if test="type != null" >
         #{fileUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{buyLink,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -182,6 +193,9 @@
       <if test="record.price != null" >
         file_url = #{record.fileUrl,jdbcType=VARCHAR},
       </if>
+      <if test="record.price != null" >
+        buy_link = #{record.buyLink,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -198,6 +212,7 @@
       price = #{record.price,jdbcType=DOUBLE},
       file_path = #{record.filePath,jdbcType=VARCHAR},
       file_url = #{record.fileUrl,jdbcType=VARCHAR},
+      buy_link = #{record.buyLink,jdbcType=VARCHAR},
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -229,6 +244,9 @@
       <if test="price != null" >
         file_url = #{fileUrl,jdbcType=VARCHAR},
       </if>
+      <if test="price != null" >
+        buy_link = #{buyLink,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
@@ -241,7 +259,8 @@
       type = #{type,jdbcType=VARCHAR},
       price = #{price,jdbcType=DOUBLE},
       file_path = #{filePath,jdbcType=VARCHAR},
-      file_url = #{fileUrl,jdbcType=VARCHAR}
+      file_url = #{fileUrl,jdbcType=VARCHAR},
+      buy_link = #{buyLink,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

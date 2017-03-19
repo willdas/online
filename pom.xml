@@ -108,6 +108,12 @@
 			<artifactId>mybatis-spring</artifactId>
 			<version>1.2.2</version>
 		</dependency>
+		<!-- mybatis pagehelper -->
+		<dependency>
+			<groupId>com.github.pagehelper</groupId>
+			<artifactId>pagehelper</artifactId>
+			<version>3.6.3</version>
+		</dependency>
 		<!-- 日志处理 -->
 		<dependency>
 			<groupId>org.slf4j</groupId>

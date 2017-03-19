@@ -1,10 +1,12 @@
 package com.online.cms.cms.dao;
 
+import java.util.List;
+
 import com.online.cms.cms.domain.ElectronBook;
 
 public interface ElectronBookMapper{
 
-   int deleteByPrimaryKey(String id);
+    int deleteByPrimaryKey(String id);
 
     int insert(ElectronBook record);
 
@@ -15,4 +17,6 @@ public interface ElectronBookMapper{
     int updateByPrimaryKeySelective(ElectronBook record);
 
     int updateByPrimaryKey(ElectronBook record);
+
+	List<ElectronBook> findAll();
 }

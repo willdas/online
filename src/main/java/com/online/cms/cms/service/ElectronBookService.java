@@ -23,5 +23,7 @@ public interface ElectronBookService{
 	public int update(ElectronBook eBook);
 	
 	public int delete(String id);
+
+	public List<ElectronBook> findAll();
 	
 }

@@ -1,40 +1,39 @@
-/* 添加电子书 */ 
+/* 操作电子书js */ 
 $(function(){
-	$("#addEBook").click(function(){
-		alert(getRootPath());
+	// 清空
+	$("#reset").on('click',function(){
+		$("input[type='text']").val("");
+		$("#describes").val("");
+		window.location.reload();
+	});
+	// 修改电子书
+	$("#updateEBook").click(function(){
 		$.ajax({
 			type : "POST",
-			url : getRootPath()+"/eBook/addEBook",
+			url : getRootPath()+"/eBook/updateEBook",
 			data : {
 				"id" : $("#bookNum").val(),
 				"bookName":$("#bookName").val(),
 				"type":$("#selectType").val(),
 				"author":$("#author").val(),
 				"price":$("#price").val(),
+				"buyLink":$("#buyLink").val(),
+				"fileUrl":$("#fileUrl").val(),
 				"publishDate":$("#publishDate").val(),
 				"describes":$("#describes").val()
 			},
 			success : function(data){
 				if(data == 1){
-					alert("添加成功");
+					$("#message").html("修改成功!");
 				}else{
-					alert("添加失败");
+					$("#message").html("修改失败!");
 				}
 			},
 			error:function(errorData){
-				alert("添加失败");
+				console.log("状态码=="+errorData);
+				alert("网络连接失败");
 			}
 		});
 	});
-	
-	// 清空
-	$("#reset").on('click',function(){
-		history.go(0);
-		$("input[type='text']").val("");
-		$("#describes").val("");
-	});
-	
- 
-	
 });
 

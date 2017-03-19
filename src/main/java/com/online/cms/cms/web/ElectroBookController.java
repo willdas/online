@@ -1,5 +1,9 @@
 package com.online.cms.cms.web;
 
+import java.io.File;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,9 +11,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.online.cms.cms.domain.ElectronBook;
 import com.online.cms.cms.service.ElectronBookService;
+import com.online.commons.util.FileUtil;
+import com.online.commons.util.UniversalPage;
 
 
 /**
@@ -34,14 +41,26 @@ public class ElectroBookController {
 	}
 	
 	/**
-	 * 进入电子书展示页面
+	 * 分页电子书
+	 * @param pageNum
+	 * @param pageSize
+	 * @param map
 	 * @return
 	 */
-	@RequestMapping("/listEBook")
-	public String listPage(){
+	@RequestMapping("/page/getEBooks")
+	public String getEBook(Integer pageNum,Integer pageSize,Map<String,Object> map){
+		pageNum = pageNum == null ? 1 : pageNum;
+		pageSize = pageSize == null ? 10 : pageSize;
+		PageHelper.startPage(pageNum,pageSize);
+		List<ElectronBook> listEBooks = electronBookService.findAll();
+		PageInfo<ElectronBook> eBookPage = UniversalPage.pageInfo(listEBooks);
+		map.put("total",eBookPage.getPages());
+		map.put("pageNum",eBookPage.getPageNum());
+		map.put("eBookList",eBookPage.getList());
+		map.put("listEBooks", listEBooks);
 		return "managePage/showEBook";
 	}
-	
+
 	/**
 	 * 添加电子书
 	 * @return
@@ -49,7 +68,7 @@ public class ElectroBookController {
 	@RequestMapping("/addEBook")
 	public String addEBook(ElectronBook eBook,MultipartFile filePdf){
 		electronBookService.save(eBook,filePdf);
-		return "redirect:/eBook/listEBook";
+		return "redirect:/eBook/page/getEBooks";
 	}
 	
 	/**
@@ -57,11 +76,25 @@ public class ElectroBookController {
 	 * @param id
 	 */
 	@RequestMapping("/delEBook/{id}")
-	@ResponseBody
-	public void del(@PathVariable("id") String id){
-		electronBookService.delete(id);
+	public String delEBook(@PathVariable("id") String id){
+		String filePath = electronBookService.getEBookById(id).getFilePath();
+		if(!filePath.equals(" ") || filePath != null || "null".equals(filePath)){
+			FileUtil.deleteFile(new File("H:"+filePath));
+			electronBookService.delete(id);
+		}
+		return "redirect:/eBook/page/getEBooks";
 	}
 	
+	/**
+	 * 进入修改电子书页面
+	 * @return
+	 */
+	@RequestMapping("/intoUpdateEBookPage/{id}")
+	public String intoUpdateEBookPage(@PathVariable("id") String id,Model model){
+		ElectronBook eBook = electronBookService.getEBookById(id);
+		model.addAttribute("eBook",eBook);
+		return "managePage/editEBook";
+	}
 	/**
 	 * 修改电子书
 	 * @return
@@ -71,41 +104,4 @@ public class ElectroBookController {
 	public int update(ElectronBook eBook){
 		return electronBookService.update(eBook);
 	}
-
-	/**
-	 * 查找单个电子书
-	 * @param id
-	 * @return
-	 */
-	@RequestMapping("/getEBook/{id}")
-	@ResponseBody
-	public String getEBookById(@PathVariable("id") String id,Model model){
-		ElectronBook eBook = electronBookService.getEBookById(id);
-		model.addAttribute("eBook", eBook);
-		return "mamager/details";
-	}
-
-	/**
-	 * 分页电子书
-	 * @param pageNum
-	 * @param pageSize
-	 * @param map
-	 * @return
-	 */
-	/*
-	@RequestMapping("/page/getEBooks")
-	public String getEBook(Integer pageNum,Integer pageSize,Map<String,Object> map){
-		System.out.println("sssss");
-		pageNum = pageNum == null ? 1 : pageNum;
-		pageSize = pageSize == null ? 10 : pageSize;
-		PageHelper.startPage(pageNum,pageSize);
-		List<ElectronBook> listEBooks = electroBookService.findAll();
-		PageInfo<ElectronBook> eBookPage = UniversalPage.pageInfo(listEBooks);
-		map.put("total",eBookPage.getPages());
-		map.put("pageNum",eBookPage.getPageNum());
-		map.put("eBookList",eBookPage.getList());
-		
-		return "jsp/managePage/showEBooks.jspmanagePage/showEBooks.jsp";
-	}*/
-
 }

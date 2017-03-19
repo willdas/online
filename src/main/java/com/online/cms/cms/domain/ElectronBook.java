@@ -26,6 +26,8 @@ public class ElectronBook implements Serializable{
     private String filePath;
     
     private String fileUrl;
+    
+    private String buyLink;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date publishDate;
@@ -106,12 +108,20 @@ public class ElectronBook implements Serializable{
 	public void setFileUrl(String fileUrl) {
 		this.fileUrl = fileUrl;
 	}
+	
+	public String getBuyLink() {
+		return buyLink;
+	}
+
+	public void setBuyLink(String buyLink) {
+		this.buyLink = buyLink;
+	}
 
 	@Override
 	public String toString() {
 		return "ElectronBook [id=" + id + ", bookName=" + bookName + ", author=" + author + ", describes=" + describes
-				+ ", filePath=" + filePath + ", fileUrl=" + fileUrl + ", publishDate=" + publishDate + ", type=" + type
-				+ ", price=" + price + "]";
+				+ ", filePath=" + filePath + ", fileUrl=" + fileUrl + ", buyLink=" + buyLink + ", publishDate="
+				+ publishDate + ", type=" + type + ", price=" + price + "]";
 	}
 
 	@Override
@@ -120,6 +130,7 @@ public class ElectronBook implements Serializable{
 		int result = 1;
 		result = prime * result + ((author == null) ? 0 : author.hashCode());
 		result = prime * result + ((bookName == null) ? 0 : bookName.hashCode());
+		result = prime * result + ((buyLink == null) ? 0 : buyLink.hashCode());
 		result = prime * result + ((describes == null) ? 0 : describes.hashCode());
 		result = prime * result + ((filePath == null) ? 0 : filePath.hashCode());
 		result = prime * result + ((fileUrl == null) ? 0 : fileUrl.hashCode());
@@ -148,6 +159,11 @@ public class ElectronBook implements Serializable{
 			if (other.bookName != null)
 				return false;
 		} else if (!bookName.equals(other.bookName))
+			return false;
+		if (buyLink == null) {
+			if (other.buyLink != null)
+				return false;
+		} else if (!buyLink.equals(other.buyLink))
 			return false;
 		if (describes == null) {
 			if (other.describes != null)

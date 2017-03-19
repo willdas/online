@@ -41,7 +41,6 @@ public class ElectronBookServiceImpl implements ElectronBookService{
 		if(!filePdf.isEmpty()){
 			saveFile(eBook,filePdf);
 		}
-		System.out.println("====="+eBook);
 		return electronBookMapper.insert(eBook);
 	}
 
@@ -67,7 +66,7 @@ public class ElectronBookServiceImpl implements ElectronBookService{
 			e.printStackTrace();
 		}
 		eBook.setFilePath(pdfPath);
-		eBook.setFileUrl("http://127.0.0.1:8080/" + pdfPath);
+		eBook.setFileUrl("http://127.0.0.1:8080" + pdfPath);
 	}
 	
 	/**
@@ -92,6 +91,14 @@ public class ElectronBookServiceImpl implements ElectronBookService{
 	@Override
 	public ElectronBook getEBookById(String id) {
 		return electronBookMapper.selectByPrimaryKey(id);
+	}
+
+	/**
+	 * 查找所有电子书
+	 */
+	@Override
+	public List<ElectronBook> findAll(){
+		return electronBookMapper.findAll();
 	}
 
 	
