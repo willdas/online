@@ -3,4 +3,5 @@
 /target/
 /.settings/
 /mtk/.classpath
+/mtk/jdbc.properties
 /test/

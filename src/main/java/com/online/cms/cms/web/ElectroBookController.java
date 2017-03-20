@@ -4,6 +4,9 @@ import java.io.File;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +18,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.online.cms.cms.domain.ElectronBook;
 import com.online.cms.cms.service.ElectronBookService;
+import com.online.commons.util.DateFormat;
 import com.online.commons.util.FileUtil;
 import com.online.commons.util.UniversalPage;
 
@@ -90,8 +94,9 @@ public class ElectroBookController {
 	 * @return
 	 */
 	@RequestMapping("/intoUpdateEBookPage/{id}")
-	public String intoUpdateEBookPage(@PathVariable("id") String id,Model model){
+	public String intoUpdateEBookPage(@PathVariable("id") String id,Model model,HttpServletRequest request){
 		ElectronBook eBook = electronBookService.getEBookById(id);
+		model.addAttribute("publishDate",DateFormat.dateToString(eBook.getPublishDate()));
 		model.addAttribute("eBook",eBook);
 		return "managePage/editEBook";
 	}

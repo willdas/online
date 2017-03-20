@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -10,7 +11,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Bootstrap 实例 - 边框表格</title>
+<title>展示电子书</title>
 <link rel="stylesheet" href="../../resources/css/bootstrap/bootstrap.css">
 <script src="../../resources/js/jquery/jquery-2.1.0.js"></script>
 <script src="../../resources/js/bootstrap/bootstrap.js"></script>
@@ -21,7 +22,6 @@
 	margin: 0 auto;
 	margin-top: 15px;
 	font-size: 20px;
-}
 }
 </style>
 </head>
@@ -48,8 +48,8 @@
 					<td>${item.type}</td>
 					<td>${item.author}</td>
 					<td>${item.price}</td>
-					<td>${item.publishDate}</td>
-					<td>${item.describes}</td>
+					<td><fmt:formatDate value="${item.publishDate}" type="date" /></td>
+					<td></td>
 					<td><a href="<%=basePath%>eBook/intoUpdateEBookPage/${item.id}">修改</a> 
 						<a href="javascript:if(confirm('确定要删除吗？删除后不可恢复')){window.location.href='<%=basePath%>eBook/delEBook/${item.id}'}">
 							删除 </a></td>

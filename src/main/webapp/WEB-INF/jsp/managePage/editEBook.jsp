@@ -16,6 +16,7 @@
 <link type="text/css" rel="stylesheet" href="../../resources/css/bootstrap/bootstrap-select.css">
 <link type="text/css" rel="stylesheet" href="../../resources/css/jedate/jedate.css">
 <link type="text/css" rel="stylesheet" href="../../resources/css/fileInput/fileinput.css">
+<script type="text/javascript" src="../../resources/js/jquery/jquery-2.1.0.js"></script>
 <style type="text/css">
 .h3-class {
 	width: 20%;
@@ -23,13 +24,17 @@
 	margin: 0 auto;
 	margin-top: 15px;
 }
-
 .div-top {
 	margin-top: 10px;
 	margin-left: 15%;
 	margin-right: 0%;
 }
 </style>
+<script type="text/javascript">
+	$(function(){
+		$("#selectType").val("${eBook.type}");
+	});
+</script>
 </head>
 <body>
 	<h3 class="h3-class">修改电子书</h3>
@@ -93,14 +98,14 @@
 			<div class="form-group">
 				<label class="col-sm-2 control-label">日期</label>
 				<div class="col-sm-10">
-					<input class="form-control" id="publishDate" type="text" name="publishDate"
+					<input class="form-control" id="publishDate" type="text" name="publishDate" value="${publishDate}"
 						placeholder="请选择出版日期">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-2 control-label">描述</label>
 				<div class="col-sm-10">
-					<textarea class="form-control" id="describes" rows="3" name="describes" placeholder="请输入本书的简介"></textarea>
+					<textarea class="form-control" id="describes" rows="3" name="describes" placeholder="请输入本书的简介">${eBook.describes}</textarea>
 				</div>
 			</div>
 			<div class="form-group">
@@ -113,7 +118,6 @@
 		</div>
 	</div>
 </body>
-<script type="text/javascript" src="../../resources/js/jquery/jquery-2.1.0.js"></script>
 <script type="text/javascript" src="../../resources/js/bootstrap/bootstrap.js"></script>
 <script type="text/javascript" src="../../resources/js/fileInput/fileinput.js"></script>
 <script type="text/javascript" src="../../resources/js/fileInput/zh.js"></script>
