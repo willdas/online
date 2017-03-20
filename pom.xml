@@ -112,7 +112,7 @@
 		<dependency>
 			<groupId>com.github.pagehelper</groupId>
 			<artifactId>pagehelper</artifactId>
-			<version>3.6.3</version>
+			<version>4.0.0</version>
 		</dependency>
 		<!-- 日志处理 -->
 		<dependency>

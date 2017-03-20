@@ -1,12 +1,9 @@
 package com.online.cms.cms.web;
 
 import java.io.File;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -52,16 +49,21 @@ public class ElectroBookController {
 	 * @return
 	 */
 	@RequestMapping("/page/getEBooks")
-	public String getEBook(Integer pageNum,Integer pageSize,Map<String,Object> map){
+	public String getEBook(Integer pageNum,Integer pageSize,Map<String,Object> map,HttpServletRequest request){
 		pageNum = pageNum == null ? 1 : pageNum;
 		pageSize = pageSize == null ? 10 : pageSize;
 		PageHelper.startPage(pageNum,pageSize);
 		List<ElectronBook> listEBooks = electronBookService.findAll();
 		PageInfo<ElectronBook> eBookPage = UniversalPage.pageInfo(listEBooks);
-		map.put("total",eBookPage.getPages());
-		map.put("pageNum",eBookPage.getPageNum());
+		Integer visiblePages = eBookPage.getPages() <= 3 ? eBookPage.getPages() : 3;
+		request.setAttribute("pageNum", pageNum);
+	    request.setAttribute("totalPages",eBookPage.getPages());
+	    request.setAttribute("visiblePages",visiblePages);
+	    request.setAttribute("firstPage", eBookPage.getFirstPage());
+	    request.setAttribute("lastPage", eBookPage.getLastPage());
+	    request.setAttribute("upPage",pageNum-1);
+	    request.setAttribute("nextPage", eBookPage.getNextPage());
 		map.put("eBookList",eBookPage.getList());
-		map.put("listEBooks", listEBooks);
 		return "managePage/showEBook";
 	}
 

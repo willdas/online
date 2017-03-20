@@ -77,7 +77,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="col-sm-2 control-label">购买地址</label>
+				<label class="col-sm-2 control-label">购买</label>
 				<div class="col-sm-10">
 					<input class="form-control" id="buyLink" type="text" name="buyLink"
 						placeholder="购买地址">

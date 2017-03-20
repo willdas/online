@@ -5,12 +5,18 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.online.cms.cms.domain.ElectronBook;
 import com.online.cms.cms.service.ElectronBookService;
 
 import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
+
 import org.apache.log4j.Logger;
 
 @RunWith(SpringJUnit4ClassRunner.class) //表示继承了SpringJUnit4ClassRunner类
@@ -21,6 +27,16 @@ public class TestDemo {
 	
 	@Autowired
 	private ElectronBookService electronBookService;
+	
+	
+	@Test
+	public void eBookPage(){
+		PageHelper.startPage(1,10);
+		List<ElectronBook> eBookList = electronBookService.findAll();
+		PageInfo<ElectronBook> info = new PageInfo<ElectronBook>(eBookList);
+		System.out.println(info.getList());
+	}
+	
 	
 	@Test
 	public void addEBook() throws ParseException{

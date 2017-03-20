@@ -9,9 +9,6 @@
 <head>
 <meta charset="utf-8">
 <title>修改电子书</title>
-<!-- <link rel="stylesheet"href="https://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="https://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 <link type="text/css" rel="stylesheet" href="../../resources/css/bootstrap/bootstrap.css">
 <link type="text/css" rel="stylesheet" href="../../resources/css/bootstrap/bootstrap-select.css">
 <link type="text/css" rel="stylesheet" href="../../resources/css/jedate/jedate.css">
@@ -50,7 +47,7 @@
 			<div class="form-group">
 				<label class="col-sm-2 control-label">书名</label>
 				<div class="col-sm-10">
-					<input class="form-control" id="bookName" type="text" name="bookName" value="${eBook.bookName}"
+					<input class="form-control" id="bookName" type="text" name="bookName" value="${eBook.bookName}" readonly="readonly"
 						placeholder="请输入书名">
 				</div>
 			</div>
@@ -82,14 +79,14 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="col-sm-2 control-label">购买地址</label>
+				<label class="col-sm-2 control-label">购买</label>
 				<div class="col-sm-10">
 					<input class="form-control" id="buyLink" type="text" name="buyLink" value="${eBook.buyLink}"
 						placeholder="购买地址">
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="col-sm-2 control-label">访问地址</label>
+				<label class="col-sm-2 control-label">访问</label>
 				<div class="col-sm-10">
 					<input class="form-control" id="fileUrl" type="text" name="fileUrl" value="${eBook.fileUrl}"
 						placeholder="访问地址">
