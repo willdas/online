@@ -2,6 +2,6 @@
 /test-classes/
 /target/
 /.settings/
-/mtk/.classpath
-/mtk/jdbc.properties
 /test/
+.classpath/
+jdbc.properties/

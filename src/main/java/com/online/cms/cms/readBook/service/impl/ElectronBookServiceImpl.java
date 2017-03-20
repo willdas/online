@@ -1,4 +1,4 @@
-package com.online.cms.cms.service.impl;
+package com.online.cms.cms.readBook.service.impl;
 
 import java.io.File;
 import java.io.IOException;
@@ -7,10 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
-import com.online.cms.cms.dao.ElectronBookMapper;
-import com.online.cms.cms.domain.ElectronBook;
-import com.online.cms.cms.service.ElectronBookService;
-import com.online.commons.util.FileUtil;
+import com.online.cms.cms.readBook.dao.ElectronBookMapper;
+import com.online.cms.cms.readBook.domain.ElectronBook;
+import com.online.cms.cms.readBook.service.ElectronBookService;
+import com.commons.util.FileUtil;
 
 /**
  * 电子书Service实现类

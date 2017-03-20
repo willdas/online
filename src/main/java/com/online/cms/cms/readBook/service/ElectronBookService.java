@@ -1,10 +1,10 @@
-package com.online.cms.cms.service;
+package com.online.cms.cms.readBook.service;
 
 import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import com.online.cms.cms.domain.ElectronBook;
+import com.online.cms.cms.readBook.domain.ElectronBook;
 
 
 /**

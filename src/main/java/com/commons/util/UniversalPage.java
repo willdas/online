@@ -1,4 +1,4 @@
-package com.online.commons.util;
+package com.commons.util;
 
 import java.util.List;
 import com.github.pagehelper.PageInfo;

@@ -1,4 +1,4 @@
-package com.online.cms.cms.domain;
+package com.online.cms.cms.readBook.domain;
 
 import java.io.Serializable;
 import java.util.Date;

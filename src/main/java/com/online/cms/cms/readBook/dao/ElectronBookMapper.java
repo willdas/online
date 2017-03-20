@@ -1,8 +1,8 @@
-package com.online.cms.cms.dao;
+package com.online.cms.cms.readBook.dao;
 
 import java.util.List;
 
-import com.online.cms.cms.domain.ElectronBook;
+import com.online.cms.cms.readBook.domain.ElectronBook;
 
 public interface ElectronBookMapper{
 

@@ -1,4 +1,4 @@
-package com.online.cms.cms.web;
+package com.online.cms.cms.readBook.web;
 
 import java.io.File;
 import java.util.List;
@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.online.cms.cms.domain.ElectronBook;
-import com.online.cms.cms.service.ElectronBookService;
-import com.online.commons.util.DateFormat;
-import com.online.commons.util.FileUtil;
-import com.online.commons.util.UniversalPage;
+import com.online.cms.cms.readBook.domain.ElectronBook;
+import com.online.cms.cms.readBook.service.ElectronBookService;
+import com.commons.util.DateFormat;
+import com.commons.util.FileUtil;
+import com.commons.util.UniversalPage;
 
-
+	
 /**
  * 电子书后台管理
  * @author willdas

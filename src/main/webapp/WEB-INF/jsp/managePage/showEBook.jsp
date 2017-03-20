@@ -63,7 +63,7 @@
 <script type="text/javascript">
 $(function(){
 	/* 分页 */
-	$.jqPaginator('#pagination',{
+	$.jqPaginator('#pagination',{ 
         totalPages:   <%=request.getAttribute("totalPages")%>,
         visiblePages: <%=request.getAttribute("visiblePages")%>,
         currentPage:  <%=request.getAttribute("pageNum")%>,

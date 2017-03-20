@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.online.cms.cms.dao.ElectronBookMapper" >
-  <resultMap id="BaseResultMap" type="com.online.cms.cms.domain.ElectronBook" >
+<mapper namespace="com.online.cms.cms.readBook.dao.ElectronBookMapper" >
+  <resultMap id="BaseResultMap" type="com.online.cms.cms.readBook.domain.ElectronBook" >
     <id column="id" property="id" jdbcType="VARCHAR" />
     <result column="book_name" property="bookName" jdbcType="VARCHAR" />
     <result column="author" property="author" jdbcType="VARCHAR" />
@@ -88,7 +88,7 @@
     delete from books
     where id = #{id,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.online.cms.cms.domain.ElectronBook" >
+  <insert id="insert" parameterType="com.online.cms.cms.readBook.domain.ElectronBook" >
     insert into books (id, book_name, author, 
       describes, publish_date, type, 
       price,file_path,file_url,buy_link)
@@ -96,7 +96,7 @@
       #{describes,jdbcType=VARCHAR}, #{publishDate,jdbcType=DATE}, #{type,jdbcType=VARCHAR}, 
       #{price,jdbcType=DOUBLE}, #{filePath,jdbcType=VARCHAR}, #{fileUrl,jdbcType=VARCHAR}, #{buyLink,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.online.cms.cms.domain.ElectronBook" >
+  <insert id="insertSelective" parameterType="com.online.cms.cms.readBook.domain.ElectronBook" >
     insert into books
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -217,7 +217,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.online.cms.cms.domain.ElectronBook" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.online.cms.cms.readBook.domain.ElectronBook" >
     update books
     <set >
       <if test="bookName != null" >
@@ -250,7 +250,7 @@
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.online.cms.cms.domain.ElectronBook" >
+  <update id="updateByPrimaryKey" parameterType="com.online.cms.cms.readBook.domain.ElectronBook" >
     update books
     set book_name = #{bookName,jdbcType=VARCHAR},
       author = #{author,jdbcType=VARCHAR},
