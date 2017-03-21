@@ -2,22 +2,32 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>在线阅读电子书</title>
 </head>
 <body>
 <table>
+	<thead>
+		<tr>
+			<td>编号</td>
+			<td>书名</td>
+			<td>作者</td>
+			<td>出版日期</td>
+			<td>价格</td>
+			<td>简介</td>
+			<td>购买地址</td>
+			<td>在线阅读</td>
+		</tr>
+	</thead>
 	<tbody>
 		<tr th:each="item : ${listBooks}">
 			<td th:text="${item.id}"></td>
 			<td th:text="${item.bookName}"></td>
 			<td th:text="${item.author}"></td>
+			<td th:text="${#dates.format(item.publishDate,'yyyy-MM-dd')}"></td>
 			<td th:text="${item.price}"></td>
-			<td><a th:href="@{${item.buyLink}}">点击购买</a></td>
-			<td th:text="${item.buyLink}"></td>
-			<td th:text="${item.publishDate}"></td>
-			<td th:if="${not #strings.isEmpty(item.fileUrl)}" th:text="${item.fileUrl}">无链接</td>
-			<!-- <td th:text="${#calendars.format('2017 03 32','yyyy MMMM dd')}"></td> -->
 			<td th:text="${item.describes}"></td>
+			<td><a th:href="@{${item.buyLink}}">点击购买</a></td>
+			<td><a th:href="@{${item.fileUrl}}">在线阅读</a></td>
 		</tr>
 	</tbody>
 </table>
