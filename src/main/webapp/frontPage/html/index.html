@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<table>
+	<tbody>
+		<tr th:each="item : ${listBooks}">
+			<td th:text="${item.id}"></td>
+			<td th:text="${item.bookName}"></td>
+			<td th:text="${item.author}"></td>
+			<td th:text="${item.price}"></td>
+			<td><a th:href="@{${item.buyLink}}">点击购买</a></td>
+			<td th:text="${item.buyLink}"></td>
+			<td th:text="${item.publishDate}"></td>
+			<td th:if="${not #strings.isEmpty(item.fileUrl)}" th:text="${item.fileUrl}">无链接</td>
+			<!-- <td th:text="${#calendars.format('2017 03 32','yyyy MMMM dd')}"></td> -->
+			<td th:text="${item.describes}"></td>
+		</tr>
+	</tbody>
+</table>
+</body>
+</html>

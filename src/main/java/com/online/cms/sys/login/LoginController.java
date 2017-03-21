@@ -21,7 +21,7 @@ public class LoginController {
 	 */
 	@RequestMapping("/eb/loginManagement")
 	public String login(){
-		return "login/login";
+		return "jsp/login/login";
 	}
 	
 	/**
@@ -34,7 +34,7 @@ public class LoginController {
 		String password = request.getParameter("password");
 		if (user.equals("admin" ) && password.equals("123")) {
 			// 登录成功进入后台管理页面
-			return "managePage/backstageManagePage";
+			return "jsp/managePage/backstageManagePage";
 		}else{
 			//登录失败返回登录页面
 			return "redirect:/eBookLogin/eb/loginManagement";

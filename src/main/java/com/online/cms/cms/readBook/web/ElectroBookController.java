@@ -38,7 +38,7 @@ public class ElectroBookController {
 	 */
 	@RequestMapping("/intoAddEBookPage")
 	public String addEBookPage(){
-		return "managePage/addEBook";
+		return "jsp/managePage/addEBook";
 	}
 	
 	/**
@@ -64,7 +64,7 @@ public class ElectroBookController {
 	    request.setAttribute("upPage",pageNum-1);
 	    request.setAttribute("nextPage", eBookPage.getNextPage());
 		map.put("eBookList",eBookPage.getList());
-		return "managePage/showEBook";
+		return "jsp/managePage/showEBook";
 	}
 
 	/**
@@ -100,7 +100,7 @@ public class ElectroBookController {
 		ElectronBook eBook = electronBookService.getEBookById(id);
 		model.addAttribute("publishDate",DateFormat.dateToString(eBook.getPublishDate()));
 		model.addAttribute("eBook",eBook);
-		return "managePage/editEBook";
+		return "jsp/managePage/editEBook";
 	}
 	/**
 	 * 修改电子书
