@@ -70,7 +70,7 @@
        	<property name="templateResolver" ref="templateResolver" />
     </bean>
     <bean id="templateResolver" class="org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver">
-      	<property name="prefix" value="/frontPage/" />
+      	<property name="prefix" value="/WEB-INF/frontPage/" />
       	<property name="suffix" value=".html" />
       	<property name="templateMode" value="HTML5" />
       	<property name="characterEncoding" value="UTF-8"/>

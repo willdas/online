@@ -78,6 +78,12 @@
   	 select id, book_name, author, describes, publish_date, type, price, file_path, file_url, buy_link 
   	 from books 
   </select>
+  <select id="findBookByType" resultMap="BaseResultMap" parameterType="java.lang.String">
+  	 select 
+  	 <include refid="Base_Column_List" />
+  	 from books 
+  	 where type = #{type,jdbcType=VARCHAR}
+  </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />

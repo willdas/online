@@ -14,4 +14,10 @@ public interface ReadBookService {
 	 * 查找电子书
 	 */
 	List<ElectronBook> findAll();
+
+	/**
+	 * 根据类型查找电子书
+	 * @param name
+	 */
+	List<ElectronBook> findBookByType(String type);
 }

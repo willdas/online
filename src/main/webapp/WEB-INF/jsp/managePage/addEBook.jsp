@@ -34,7 +34,7 @@
 <body>
 	<h3 class="h3-class">添加电子书</h3>
 	<div class="div-top">
-		<form class="form-horizontal" role="form" action="<%=basePath%>eBook/addEBook" method="post" enctype="multipart/form-data">
+		<form class="form-horizontal" role="form" action="<%=basePath%>eBook/addEBook.html" method="post" enctype="multipart/form-data">
 			<div class="form-group">
 				<label class="col-sm-2 control-label">编号</label>
 				<div class="col-sm-10">
@@ -52,14 +52,14 @@
 			<div class="form-group">
 				  <label class="col-sm-2 control-label">类型</label>
 				  <div class="col-sm-10">
-				  <select class="selectpicker show-tick form-control" data-live-search="true" id="selectType" name="type">
-					      <option>请选择类型</option>
-					      <option>JAVA</option>
-					      <option>HTML</option>
-					      <option>CSS</option>
-					      <option>JavaScript</option>
-					      <option>PHP</option>
-				    </select>
+					  <select class="selectpicker show-tick form-control" data-live-search="true" id="selectType" name="type">
+						      <option>请选择类型</option>
+						      <option>JAVA</option>
+						      <option>HTML</option>
+						      <option>CSS</option>
+						      <option>JAVASCRIPPT</option>
+						      <option>PHP</option>
+					   </select>
 				  </div>
 			</div>
 			<div class="form-group">

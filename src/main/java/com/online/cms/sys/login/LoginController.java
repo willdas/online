@@ -19,7 +19,7 @@ public class LoginController {
 	 * @return 
 	 * 使用不规则命名—>防止后台扫描软件扫到后台路径
 	 */
-	@RequestMapping("/eb/loginManagement")
+	@RequestMapping("/eb/loginManagement.html")
 	public String login(){
 		return "jsp/login/login";
 	}
@@ -28,7 +28,7 @@ public class LoginController {
 	 * 登录成功并进入后台管理页面
 	 * @return
 	 */
-	@RequestMapping("/loginManagentPage")
+	@RequestMapping("/loginManagentPage.html")
 	public String loginIn(HttpServletRequest request){
 		String user = request.getParameter("username");
 		String password = request.getParameter("password");
@@ -37,7 +37,7 @@ public class LoginController {
 			return "jsp/managePage/backstageManagePage";
 		}else{
 			//登录失败返回登录页面
-			return "redirect:/eBookLogin/eb/loginManagement";
+			return "redirect:/eBookLogin/eb/loginManagement.html";
 		}
 	}
 	

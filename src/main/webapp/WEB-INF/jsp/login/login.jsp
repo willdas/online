@@ -45,7 +45,7 @@
 		<div class="avtar">
 			<img src="../../resources/images/avtar.png" />
 		</div>
-		<form action="<%=basePath%>eBookLogin/loginManagentPage" method="post">
+		<form action="<%=basePath%>eBookLogin/loginManagentPage.html" method="post">
 			<input type="text" name="username" class="text" value="用户名" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '用户名';}">
 			<input type="password" name="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
 			<input type="submit" value="登录">

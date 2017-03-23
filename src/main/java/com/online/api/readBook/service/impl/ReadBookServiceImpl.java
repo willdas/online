@@ -29,4 +29,12 @@ public class ReadBookServiceImpl implements ReadBookService{
 	public List<ElectronBook> findAll() {
 		return electronBookMapper.findAll();
 	}
+	/**
+	 * 根据类型查找电子书
+	 * @param name
+	 */
+	@Override
+	public List<ElectronBook> findBookByType(String type) {
+		return electronBookMapper.findBookByType(type);
+	}
 }

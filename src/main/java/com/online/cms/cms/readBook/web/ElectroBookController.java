@@ -36,7 +36,7 @@ public class ElectroBookController {
 	 * 进入添加电子书页面
 	 * @return
 	 */
-	@RequestMapping("/intoAddEBookPage")
+	@RequestMapping("/intoAddEBookPage.html")
 	public String addEBookPage(){
 		return "jsp/managePage/addEBook";
 	}
@@ -48,7 +48,7 @@ public class ElectroBookController {
 	 * @param map
 	 * @return
 	 */
-	@RequestMapping("/page/getEBooks")
+	@RequestMapping("/page/getEBooks.html")
 	public String getEBook(Integer pageNum,Integer pageSize,Map<String,Object> map,HttpServletRequest request){
 		pageNum = pageNum == null ? 1 : pageNum;
 		pageSize = pageSize == null ? 10 : pageSize;
@@ -71,31 +71,34 @@ public class ElectroBookController {
 	 * 添加电子书
 	 * @return
 	 */
-	@RequestMapping("/addEBook")
+	@RequestMapping("/addEBook.html")
 	public String addEBook(ElectronBook eBook,MultipartFile filePdf){
 		electronBookService.save(eBook,filePdf);
-		return "redirect:/eBook/page/getEBooks";
+		return "redirect:/eBook/page/getEBooks.html";
 	}
 	
 	/**
 	 * 删除电子书
 	 * @param id
 	 */
-	@RequestMapping("/delEBook/{id}")
+	@SuppressWarnings("unused")
+	@RequestMapping("/delEBook/{id}.html")
 	public String delEBook(@PathVariable("id") String id){
 		String filePath = electronBookService.getEBookById(id).getFilePath();
 		if(!filePath.equals(" ") || filePath != null || "null".equals(filePath)){
 			FileUtil.deleteFile(new File("H:"+filePath));
 			electronBookService.delete(id);
+		}else{
+			electronBookService.delete(id); 
 		}
-		return "redirect:/eBook/page/getEBooks";
+		return "redirect:/eBook/page/getEBooks.html";
 	}
 	
 	/**
 	 * 进入修改电子书页面
 	 * @return
 	 */
-	@RequestMapping("/intoUpdateEBookPage/{id}")
+	@RequestMapping("/intoUpdateEBookPage/{id}.html")
 	public String intoUpdateEBookPage(@PathVariable("id") String id,Model model,HttpServletRequest request){
 		ElectronBook eBook = electronBookService.getEBookById(id);
 		model.addAttribute("publishDate",DateFormat.dateToString(eBook.getPublishDate()));
@@ -106,7 +109,7 @@ public class ElectroBookController {
 	 * 修改电子书
 	 * @return
 	 */
-	@RequestMapping("/updateEBook")
+	@RequestMapping("/updateEBook.do")
 	@ResponseBody
 	public int update(ElectronBook eBook){
 		return electronBookService.update(eBook);

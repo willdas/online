@@ -49,8 +49,8 @@
 					<td><fmt:formatDate value="${item.publishDate}" type="date" /></td>
 					<td>${item.describes}</td>
 					<td>
-						<a href="<%=basePath%>eBook/intoUpdateEBookPage/${item.id}">修改</a> 
-						<a href="javascript:if(confirm('确定要删除吗？删除后不可恢复')){window.location.href='<%=basePath%>eBook/delEBook/${item.id}'}">删除</a>
+						<a href="<%=basePath%>eBook/intoUpdateEBookPage/${item.id}.html">修改</a> 
+						<a href="javascript:if(confirm('确定要删除吗？删除后不可恢复')){window.location.href='<%=basePath%>eBook/delEBook/${item.id}.html'}">删除</a>
 					</td>
 				</tr>
 			</c:forEach>

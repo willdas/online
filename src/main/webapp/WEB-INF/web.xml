@@ -4,8 +4,6 @@
 	version="3.1">
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
-		<welcome-file>index.html</welcome-file>
-		<welcome-file>index.htm</welcome-file>
 	</welcome-file-list>
 	<!--配置spring-MVC -->
 	<servlet>
@@ -19,7 +17,11 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>spring</servlet-name>
-		<url-pattern>/</url-pattern>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>spring</servlet-name>
+		<url-pattern>*.html</url-pattern>
 	</servlet-mapping>
 	<!-- 表单提交POST中文乱码解决方案统一字符编码为UTF-8 -->
 	<filter>
@@ -34,4 +36,9 @@
 		<filter-name>setcharacter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	<!-- 404页面处理 -->
+	<error-page>
+	    <error-code>404</error-code>
+	    <location>/resources/html/404.html</location>
+	</error-page>
 </web-app>

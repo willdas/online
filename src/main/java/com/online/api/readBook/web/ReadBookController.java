@@ -2,9 +2,12 @@ package com.online.api.readBook.web;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.online.api.readBook.service.ReadBookService;
 import com.online.cms.cms.readBook.domain.ElectronBook;
@@ -15,7 +18,7 @@ import com.online.cms.cms.readBook.domain.ElectronBook;
  *
  */
 @Controller
-@RequestMapping("/api")
+@RequestMapping("/book")
 public class ReadBookController {
 	
 	/**
@@ -24,13 +27,14 @@ public class ReadBookController {
 	 */
 	@Autowired
 	private ReadBookService readBookService;
-	@RequestMapping("/book/getAllBooks")
-	public String getBooks(Model model){
-		List<ElectronBook> listBooks = readBookService.findAll();
-		model.addAttribute("listBooks", listBooks);
+	
+	@RequestMapping("/read/EBooks.html")
+	public String getBooks(String occupationName,Model model){
+		String occupation = occupationName.toUpperCase();
+		List<ElectronBook> EBooks = readBookService.findBookByType(occupation);
+		model.addAttribute("listBooks", EBooks);
 		return "html/index";
 	}
-
 }
 
 

@@ -12,12 +12,12 @@
 <script type="text/javascript">
 	/* 添加电子书 */ 
 	function addEBook(obj){
-		var addUrl = getRootPath()+"/eBook/intoAddEBookPage";
+		var addUrl = getRootPath()+"/eBook/intoAddEBookPage.html";
 		obj.href = addUrl;
 	}
 	/* 显示电子书 */
 	function showEBook(obj){
-		var showUrl = getRootPath()+"/eBook/page/getEBooks"; 
+		var showUrl = getRootPath()+"/eBook/page/getEBooks.html"; 
 		obj.href = showUrl;
 	}
 </script>

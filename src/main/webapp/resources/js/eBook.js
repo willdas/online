@@ -10,7 +10,7 @@ $(function(){
 	$("#updateEBook").click(function(){
 		$.ajax({
 			type : "POST",
-			url : getRootPath()+"/eBook/updateEBook",
+			url : getRootPath()+"/eBook/updateEBook.do",
 			data : {
 				"id" : $("#bookNum").val(),
 				"bookName":$("#bookName").val(),

@@ -19,4 +19,6 @@ public interface ElectronBookMapper{
     int updateByPrimaryKey(ElectronBook record);
 
 	List<ElectronBook> findAll();
+
+	List<ElectronBook> findBookByType(String type);
 }
