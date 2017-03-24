@@ -4,6 +4,11 @@ import java.security.SecureRandom;
 import java.util.UUID;
 import org.springframework.stereotype.Service;
 
+/**
+ * UUID 生成工具
+ * @author willdas
+ *
+ */
 @Service
 public abstract class IdGen {
 	@SuppressWarnings("unused")

@@ -18,7 +18,7 @@ import org.apache.log4j.Logger;
 @ContextConfiguration(locations = "classpath:spring-mybatis.xml")
 public class TestDemo {
 	
-	private static Logger logger = Logger.getLogger(TestDemo.class);
+	/*private static Logger logger = Logger.getLogger(TestDemo.class);
 	
 	@Autowired
 	private ElectronBookService electronBookService;
@@ -69,6 +69,6 @@ public class TestDemo {
 	public void getEBookById(){
 		ElectronBook eBook = electronBookService.getEBookById("241422421");
 		System.out.println(eBook);
-	}
+	}*/
 	
 }

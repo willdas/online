@@ -287,6 +287,14 @@
 						</execution>
 					</executions>
 				</plugin>
+				<!-- 修改项目名称 -->
+				<!-- <plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-war-plugin</artifactId>
+					<configuration>
+						<warName>onlineRead</warName>
+					</configuration>
+				</plugin> -->
 			</plugins>
 		</pluginManagement>
 	</build>
