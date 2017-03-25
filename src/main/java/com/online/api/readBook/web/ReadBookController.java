@@ -11,7 +11,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.commons.util.AccessLogUtil;
 import com.commons.util.IPUtil;
+import com.commons.util.IdGen;
 import com.online.api.readBook.service.ReadBookService;
 import com.online.cms.cms.readBook.domain.ElectronBook;
 import com.online.cms.sys.log.accessLog.domain.AccessLog;
@@ -26,37 +28,27 @@ import com.online.cms.sys.log.accessLog.service.AccessLogService;
 @RequestMapping("/book")
 public class ReadBookController {
 	
-	/**
-	 * 查找所有电子书
-	 * @return
-	 */
 	@Autowired
 	private ReadBookService readBookService;
 	
 	@Autowired
 	private AccessLogService accessService;
 	
+	/**
+	 * 查找所有电子书
+	 * @return
+	 */
 	@RequestMapping("/read/EBooks.html")
 	public String getBooks(HttpServletRequest request,String occupationName,Model model){
 		// 转换成大写
 		String occupation = occupationName.toUpperCase();
-		//获取ip地址
-		String ipAddress = IPUtil.getIpAddress(request);
-		AccessLog accessLog = new AccessLog();
-		accessLog.setId(2222);
-		accessLog.setUserId(111);
-		accessLog.setUser("admin");
-		accessLog.setIpAddress(ipAddress);
-		accessLog.setStartTime(new Date());
-		
+		AccessLog accessLog = AccessLogUtil.accessLog(occupation, request);
 		accessService.insertAccessLog(accessLog);
-		System.out.println("----"+accessLog);
-		
-		
 		List<ElectronBook> EBooks = readBookService.findBookByType(occupation);
 		model.addAttribute("listBooks", EBooks);
 		return "html/index";
 	}
+
 }
 
 

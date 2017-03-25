@@ -14,7 +14,18 @@ public abstract class IdGen {
 	@SuppressWarnings("unused")
 	private static SecureRandom random = new SecureRandom();
 	
-	public static String uuid(){
+	/*
+	 * 生成字符串
+	 */
+	public static String uuidString(){
 		return UUID.randomUUID().toString().replace("-", "");
 	}
+	
+	/*
+	 * 随机6位数
+	 */
+	public static int uuidInt() {
+		return Math.abs(random.nextInt(1000000));
+	}
+
 }
