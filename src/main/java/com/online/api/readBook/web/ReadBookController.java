@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,10 +40,10 @@ public class ReadBookController {
 	 * 查找某个类型下所有电子书
 	 * @return
 	 */
-	@RequestMapping("/read/EBooks.html")
-	public String getBooks(HttpServletRequest request,String occupationName,Model model){
+	@RequestMapping("/read/{type}.html")
+	public String getBooks(@PathVariable("type") String type,Model model,HttpServletRequest request){
 		// 转换成大写
-		String occupation = occupationName.toUpperCase();
+		String occupation = type.toUpperCase();
 		AccessLog accessLog = AccessLogUtil.accessLog(occupation, request);
 		accessService.insertAccessLog(accessLog);
 		List<ElectronBook> EBooks = readBookService.findBookByType(occupation);
@@ -56,7 +58,6 @@ public class ReadBookController {
 	 */
 	@RequestMapping("/detail/{id}.html")
 	public String getBookDetail(@PathVariable("id") String id){
-		System.out.println(id);
 		
 		//readBookService.findBookById(id);
 		

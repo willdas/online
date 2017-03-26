@@ -19,7 +19,7 @@
 <body>
 <div class="search">
 	<div class="s-bar">
-	  <form id="from" method="POST">
+	  <form id="from" method="post">
 		<input type="text" value="请输入你使用的语言 例如:JAVA" id="occupationName" name="occupationName" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '请输入你使用的语言 例如:JAVA';}">
 		<input type="button" onclick="enter()" value="进入"/>
 	  </form>

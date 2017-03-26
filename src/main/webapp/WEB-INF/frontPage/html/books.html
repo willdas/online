@@ -72,7 +72,7 @@
         <div id="templatemo_content_right">
         	<div th:each="item:${listBooks}">
         		<div class="templatemo_product_box">
-               		<h1><span th:text="${item.bookName}"></span>书名&ensp;(<span th:text="${item.author}">作者</span>)</h1>
+               		<h1><span th:text="${item.bookName}">书名</span>&ensp;(<span th:text="${item.author}">作者</span>)</h1>
 	   	      		<img src="../../resources/images/templatemo_image_01.jpg" alt="image" />
 	                <div class="product_info"> 
 	                	<p><span style="font-size: 12px;" th:text="${item.describes}">简介</span><a th:href="@{'/book/detail/'+(${item.id})+'.html'}">...更多</a></p>

@@ -12,5 +12,5 @@ function enter(){
 		count = 0;
 		return false;
 	}
-	toAction(getRootPath()+"/book/read/EBooks.html");
+	toAction(getRootPath()+"/book/read/"+$("#occupationName").val()+".html");
 }
