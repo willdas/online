@@ -35,7 +35,7 @@ public class ReadBookController {
 	private AccessLogService accessService;
 	
 	/**
-	 * 查找所有电子书
+	 * 查找某个类型下所有电子书
 	 * @return
 	 */
 	@RequestMapping("/read/EBooks.html")
@@ -46,7 +46,21 @@ public class ReadBookController {
 		accessService.insertAccessLog(accessLog);
 		List<ElectronBook> EBooks = readBookService.findBookByType(occupation);
 		model.addAttribute("listBooks", EBooks);
-		return "html/index";
+		return "html/books";
+	}
+	
+	/**
+	 * 查看电子书简介
+	 * @param id
+	 * @return
+	 */
+	@RequestMapping("/detail/{id}.html")
+	public String getBookDetail(@PathVariable("id") String id){
+		System.out.println(id);
+		
+		//readBookService.findBookById(id);
+		
+		return "html/detail";
 	}
 
 }
