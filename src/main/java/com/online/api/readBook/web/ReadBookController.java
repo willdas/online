@@ -57,10 +57,9 @@ public class ReadBookController {
 	 * @return
 	 */
 	@RequestMapping("/detail/{id}.html")
-	public String getBookDetail(@PathVariable("id") String id){
-		
-		//readBookService.findBookById(id);
-		
+	public String getBookDetail(@PathVariable("id") String id,Model model){
+		ElectronBook EBook = readBookService.findEBookById(id);
+		model.addAttribute("EBook",EBook);
 		return "html/detail";
 	}
 

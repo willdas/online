@@ -303,7 +303,7 @@ img {
 /* end of content */
 
 /* footer */
-#templatemo_footer {
+#templatemo_footer_show {
 	clear: both;
 	width: 960px;
 	padding: 20px 0px 20px 0;
@@ -312,6 +312,16 @@ img {
 	color: #999;
 	background-color: #111110;
 	margin-left:-2%;
+}
+#templatemo_footer_detail {
+	clear: both;
+	width: 960px;
+	padding: 20px 0px 20px 0;
+	text-align: center;
+	border-top: 1px solid #25211e;
+	color: #999;
+	background-color: #111110;
+	margin-left:0%;
 }
 
 #templatemo_footer a{

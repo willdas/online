@@ -20,4 +20,12 @@ public interface ReadBookService {
 	 * @param name
 	 */
 	List<ElectronBook> findBookByType(String type);
+	
+	/**
+	 * 根据编号查电子书
+	 * @param id
+	 * @return
+	 */
+	ElectronBook findEBookById(String id);
+	
 }
