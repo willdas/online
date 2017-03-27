@@ -67,11 +67,11 @@ $(function(){
         totalPages:   <%=request.getAttribute("totalPages")%>,
         visiblePages: <%=request.getAttribute("visiblePages")%>,
         currentPage:  <%=request.getAttribute("pageNum")%>,
-        first: '<li class="first"><a id="firstPage" href="<%=basePath%>eBook/page/getEBooks?pageNum=<%=request.getAttribute("firstPage")%>">首页</a></li>',
-        prev: '<li class="prev"><a id="upPage" href="<%=basePath%>eBook/page/getEBooks?pageNum=<%=request.getAttribute("upPage")%>">上一页</a></li>', 
-        next: '<li class="next"><a id="nextPage" href="<%=basePath%>eBook/page/getEBooks?pageNum=<%=request.getAttribute("nextPage")%>">下一页</a></li>',
-        last: '<li class="last"><a id="lastPage" href="<%=basePath%>eBook/page/getEBooks?pageNum=<%=request.getAttribute("lastPage")%>">最后一页</a></li>',
-        page: '<li class="page"><a href="<%=basePath%>eBook/page/getEBooks?pageNum={{page}}">{{page}}</a></li>',
+        first: '<li class="first"><a id="firstPage" href="<%=basePath%>eBook/page/getEBooks.html?pageNum=<%=request.getAttribute("firstPage")%>">首页</a></li>',
+        prev: '<li class="prev"><a id="upPage" href="<%=basePath%>eBook/page/getEBooks.html?pageNum=<%=request.getAttribute("upPage")%>">上一页</a></li>', 
+        next: '<li class="next"><a id="nextPage" href="<%=basePath%>eBook/page/getEBooks.html?pageNum=<%=request.getAttribute("nextPage")%>">下一页</a></li>',
+        last: '<li class="last"><a id="lastPage" href="<%=basePath%>eBook/page/getEBooks.html?pageNum=<%=request.getAttribute("lastPage")%>">最后一页</a></li>',
+        page: '<li class="page"><a href="<%=basePath%>eBook/page/getEBooks.html?pageNum={{page}}">{{page}}</a></li>',
         onPageChange: function (num, type) {
         	if(<%=request.getAttribute("nextPage")%> == 0){
         		$("#nextPage").attr('href','javascript:;');

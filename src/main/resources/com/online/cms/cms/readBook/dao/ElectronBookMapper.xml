@@ -9,8 +9,10 @@
     <result column="publish_date" property="publishDate" jdbcType="DATE" />
     <result column="type" property="type" jdbcType="VARCHAR" />
     <result column="price" property="price" jdbcType="DOUBLE" />
-    <result column="file_path" property="filePath" jdbcType="VARCHAR" />
-    <result column="file_url" property="fileUrl" jdbcType="VARCHAR" />
+    <result column="pdf_path" property="pdfPath" jdbcType="VARCHAR" />
+    <result column="pdf_url" property="pdfUrl" jdbcType="VARCHAR" />
+    <result column="image_path" property="imagePath" jdbcType="VARCHAR" />
+    <result column="image_url" property="imageUrl" jdbcType="VARCHAR" />
     <result column="buy_link" property="buyLink" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -72,10 +74,10 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, book_name, author, describes, publish_date, type, price, file_path, file_url, buy_link
+    id, book_name, author, describes, publish_date, type, price, pdf_path, pdf_url, image_path, image_url, buy_link
   </sql>
   <select id="findAll" resultMap="BaseResultMap">
-  	 select id, book_name, author, describes, publish_date, type, price, file_path, file_url, buy_link 
+  	 select id, book_name, author, describes, publish_date, type, price, pdf_path, pdf_url, image_path, image_url, buy_link 
   	 from books 
   </select>
   <select id="findBookByType" resultMap="BaseResultMap" parameterType="java.lang.String">
@@ -97,10 +99,10 @@
   <insert id="insert" parameterType="com.online.cms.cms.readBook.domain.ElectronBook" >
     insert into books (id, book_name, author, 
       describes, publish_date, type, 
-      price,file_path,file_url,buy_link)
+      price,pdf_path,pdf_url,image_path,image_url,buy_link)
     values (#{id,jdbcType=VARCHAR}, #{bookName,jdbcType=VARCHAR}, #{author,jdbcType=VARCHAR}, 
       #{describes,jdbcType=VARCHAR}, #{publishDate,jdbcType=DATE}, #{type,jdbcType=VARCHAR}, 
-      #{price,jdbcType=DOUBLE}, #{filePath,jdbcType=VARCHAR}, #{fileUrl,jdbcType=VARCHAR}, #{buyLink,jdbcType=VARCHAR})
+      #{price,jdbcType=DOUBLE}, #{pdfPath,jdbcType=VARCHAR}, #{pdfUrl,jdbcType=VARCHAR}, #{imagePath,jdbcType=VARCHAR}, #{imageUrl,jdbcType=VARCHAR}, #{buyLink,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.online.cms.cms.readBook.domain.ElectronBook" >
     insert into books
@@ -126,13 +128,19 @@
       <if test="price != null" >
         price,
       </if>
-      <if test="filePath != null" >
-        file_path,
+      <if test="pdfPath != null" >
+        pdf_path,
       </if>
-      <if test="fileUrl != null" >
-        file_url,
+      <if test="pdfUrl != null" >
+        pdf_url,
       </if>
-      <if test="fileUrl != null" >
+      <if test="imagePath != null" >
+        image_path,
+      </if>
+      <if test="imageUrl != null" >
+        image_url,
+      </if>
+      <if test="buyLink != null" >
         buy_link,
       </if>
     </trim>
@@ -158,13 +166,19 @@
       <if test="price != null" >
         #{price,jdbcType=DOUBLE},
       </if>
-       <if test="type != null" >
-        #{filePath,jdbcType=VARCHAR},
+      <if test="pdfPath != null" >
+        #{pdfPath,jdbcType=VARCHAR},
       </if>
-      <if test="type != null" >
-        #{fileUrl,jdbcType=VARCHAR},
+      <if test="pdfUrl != null" >
+        #{pdfUrl,jdbcType=VARCHAR},
       </if>
-      <if test="type != null" >
+      <if test="imagePath != null" >
+        #{imagePath,jdbcType=VARCHAR},
+      </if>
+      <if test="imageUrl != null" >
+        #{imageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="buyLink != null" >
         #{buyLink,jdbcType=VARCHAR},
       </if>
     </trim>
@@ -193,13 +207,19 @@
       <if test="record.price != null" >
         price = #{record.price,jdbcType=DOUBLE},
       </if>
-      <if test="record.price != null" >
-        file_path = #{record.filePath,jdbcType=VARCHAR},
+      <if test="record.pdfPath != null" >
+        pdf_path = #{record.pdfPath,jdbcType=VARCHAR},
       </if>
-      <if test="record.price != null" >
-        file_url = #{record.fileUrl,jdbcType=VARCHAR},
+      <if test="record.pdfUrl != null" >
+        pdf_url = #{record.pdfUrl,jdbcType=VARCHAR},
       </if>
-      <if test="record.price != null" >
+      <if test="record.imagePath != null" >
+        image_path = #{record.imagePath,jdbcType=VARCHAR},
+      </if>
+      <if test="record.imageUrl != null" >
+        image_url = #{record.imageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.buyLink != null" >
         buy_link = #{record.buyLink,jdbcType=VARCHAR},
       </if>
     </set>
@@ -216,8 +236,10 @@
       publish_date = #{record.publishDate,jdbcType=DATE},
       type = #{record.type,jdbcType=VARCHAR},
       price = #{record.price,jdbcType=DOUBLE},
-      file_path = #{record.filePath,jdbcType=VARCHAR},
-      file_url = #{record.fileUrl,jdbcType=VARCHAR},
+      pdf_path = #{record.pdfPath,jdbcType=VARCHAR},
+      pdf_url = #{record.pdfUrl,jdbcType=VARCHAR},
+      image_path = #{record.imagePath,jdbcType=VARCHAR},
+      image_url = #{record.imageUrl,jdbcType=VARCHAR},
       buy_link = #{record.buyLink,jdbcType=VARCHAR},
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -244,13 +266,19 @@
       <if test="price != null" >
         price = #{price,jdbcType=DOUBLE},
       </if>
-      <if test="price != null" >
-        file_path = #{filePath,jdbcType=VARCHAR},
+      <if test="pdfPath != null" >
+        pdf_path = #{pdfPath,jdbcType=VARCHAR},
       </if>
-      <if test="price != null" >
-        file_url = #{fileUrl,jdbcType=VARCHAR},
+      <if test="pdfUrl != null" >
+        pdf_url = #{pdfUrl,jdbcType=VARCHAR},
       </if>
-      <if test="price != null" >
+      <if test="imagePath != null" >
+        image_path = #{imagePath,jdbcType=VARCHAR},
+      </if>
+      <if test="imageUrl != null" >
+        image_url = #{imageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="buyLink != null" >
         buy_link = #{buyLink,jdbcType=VARCHAR},
       </if>
     </set>
@@ -264,8 +292,10 @@
       publish_date = #{publishDate,jdbcType=DATE},
       type = #{type,jdbcType=VARCHAR},
       price = #{price,jdbcType=DOUBLE},
-      file_path = #{filePath,jdbcType=VARCHAR},
-      file_url = #{fileUrl,jdbcType=VARCHAR},
+      pdf_path = #{pdfPath,jdbcType=VARCHAR},
+      pdf_url = #{pdfUrl,jdbcType=VARCHAR},
+      image_path = #{imagePath,jdbcType=VARCHAR},
+      image_url = #{imageUrl,jdbcType=VARCHAR},
       buy_link = #{buyLink,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>

@@ -23,9 +23,13 @@ public class ElectronBook implements Serializable{
 
     private String describes;
     
-    private String filePath;
+    private String pdfPath;
     
-    private String fileUrl;
+    private String pdfUrl;
+    
+    private String imagePath;
+
+    private String imageUrl;
     
     private String buyLink;
 
@@ -93,22 +97,22 @@ public class ElectronBook implements Serializable{
         this.price = price;
     }
     
-    public String getFilePath() {
-		return filePath;
+    public String getPdfPath() {
+		return pdfPath;
 	}
 
-	public void setFilePath(String filePath) {
-		this.filePath = filePath;
+	public void setPdfPath(String pdfPath) {
+		this.pdfPath = pdfPath;
 	}
 
-	public String getFileUrl() {
-		return fileUrl;
+	public String getPdfUrl() {
+		return pdfUrl;
 	}
 
-	public void setFileUrl(String fileUrl) {
-		this.fileUrl = fileUrl;
+	public void setPdfUrl(String pdfUrl) {
+		this.pdfUrl = pdfUrl;
 	}
-	
+
 	public String getBuyLink() {
 		return buyLink;
 	}
@@ -117,91 +121,22 @@ public class ElectronBook implements Serializable{
 		this.buyLink = buyLink;
 	}
 
-	@Override
-	public String toString() {
-		return "ElectronBook [id=" + id + ", bookName=" + bookName + ", author=" + author + ", describes=" + describes
-				+ ", filePath=" + filePath + ", fileUrl=" + fileUrl + ", buyLink=" + buyLink + ", publishDate="
-				+ publishDate + ", type=" + type + ", price=" + price + "]";
+	public String getImageUrl() {
+		return imageUrl;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((author == null) ? 0 : author.hashCode());
-		result = prime * result + ((bookName == null) ? 0 : bookName.hashCode());
-		result = prime * result + ((buyLink == null) ? 0 : buyLink.hashCode());
-		result = prime * result + ((describes == null) ? 0 : describes.hashCode());
-		result = prime * result + ((filePath == null) ? 0 : filePath.hashCode());
-		result = prime * result + ((fileUrl == null) ? 0 : fileUrl.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((price == null) ? 0 : price.hashCode());
-		result = prime * result + ((publishDate == null) ? 0 : publishDate.hashCode());
-		result = prime * result + ((type == null) ? 0 : type.hashCode());
-		return result;
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		ElectronBook other = (ElectronBook) obj;
-		if (author == null) {
-			if (other.author != null)
-				return false;
-		} else if (!author.equals(other.author))
-			return false;
-		if (bookName == null) {
-			if (other.bookName != null)
-				return false;
-		} else if (!bookName.equals(other.bookName))
-			return false;
-		if (buyLink == null) {
-			if (other.buyLink != null)
-				return false;
-		} else if (!buyLink.equals(other.buyLink))
-			return false;
-		if (describes == null) {
-			if (other.describes != null)
-				return false;
-		} else if (!describes.equals(other.describes))
-			return false;
-		if (filePath == null) {
-			if (other.filePath != null)
-				return false;
-		} else if (!filePath.equals(other.filePath))
-			return false;
-		if (fileUrl == null) {
-			if (other.fileUrl != null)
-				return false;
-		} else if (!fileUrl.equals(other.fileUrl))
-			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (price == null) {
-			if (other.price != null)
-				return false;
-		} else if (!price.equals(other.price))
-			return false;
-		if (publishDate == null) {
-			if (other.publishDate != null)
-				return false;
-		} else if (!publishDate.equals(other.publishDate))
-			return false;
-		if (type == null) {
-			if (other.type != null)
-				return false;
-		} else if (!type.equals(other.type))
-			return false;
-		return true;
+	public String getImagePath() {
+		return imagePath;
 	}
 
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
+	}
+
+	
 
 }

@@ -88,7 +88,7 @@
 			<div class="form-group">
 				<label class="col-sm-2 control-label">访问</label>
 				<div class="col-sm-10">
-					<input class="form-control" id="fileUrl" type="text" name="fileUrl" value="${eBook.fileUrl}"
+					<input class="form-control" id="pdfUrl" type="text" name="fileUrl" value="${eBook.pdfUrl}"
 						placeholder="访问地址">
 				</div>
 			</div>

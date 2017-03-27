@@ -84,9 +84,15 @@
 				</div>
 			</div>
 			<div class="form-group">
+				<label class="col-sm-2 control-label">图片</label>
+				<div class="col-sm-10">
+					<input id="image_input" name="files" type="file" multiple class="file" accept="image/*" placeholder="上传图片">
+				</div>
+			</div>
+			<div class="form-group">
 				<label class="col-sm-2 control-label">文件</label>
 				<div class="col-sm-10">
-					<input id="file_input" name="filePdf" type="file" data-show-preview="false" placeholder="上传文件">
+					<input id="pdf_input" name="files" type="file" class="file" data-show-preview="false" placeholder="上传文件">
 				</div>
 			</div>
 			<div class="form-group">
@@ -130,8 +136,16 @@
 		minDate : "1990-01-01 00:00:00"
 	});
 	//上传文件
-	$("#file_input").fileinput({
+	$("#pdf_input").fileinput({
 		language: 'zh',
+		allowedFileExtensions : ['pdf'],
+        showUpload : false
+    });
+	$("#image_input").fileinput({
+		language: 'zh',
+		allowedFileExtensions: ["jpg", "png", "jpeg"],
+	    maxImageWidth: 100,
+	    maxImageHeight: 160,
         showUpload : false
     });
 </script>

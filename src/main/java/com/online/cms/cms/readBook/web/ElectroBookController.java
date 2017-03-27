@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import com.github.pagehelper.PageHelper;
@@ -72,8 +73,8 @@ public class ElectroBookController {
 	 * @return
 	 */
 	@RequestMapping("/addEBook.html")
-	public String addEBook(ElectronBook eBook,MultipartFile filePdf){
-		electronBookService.save(eBook,filePdf);
+	public String addEBook(ElectronBook eBook,@RequestParam MultipartFile[] files){
+		electronBookService.save(eBook,files);
 		return "redirect:/eBook/page/getEBooks.html";
 	}
 	
@@ -84,7 +85,7 @@ public class ElectroBookController {
 	@SuppressWarnings("unused")
 	@RequestMapping("/delEBook/{id}.html")
 	public String delEBook(@PathVariable("id") String id){
-		String filePath = electronBookService.getEBookById(id).getFilePath();
+		String filePath = electronBookService.getEBookById(id).getPdfPath();
 		if(!filePath.equals(" ") || filePath != null || "null".equals(filePath)){
 			FileUtil.deleteFile(new File("H:"+filePath));
 			electronBookService.delete(id);

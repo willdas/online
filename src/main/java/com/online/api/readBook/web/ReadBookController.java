@@ -1,21 +1,13 @@
 package com.online.api.readBook.web;
 
-import java.util.Date;
 import java.util.List;
-import java.util.Random;
-
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import com.commons.util.AccessLogUtil;
-import com.commons.util.IPUtil;
-import com.commons.util.IdGen;
 import com.online.api.readBook.service.ReadBookService;
 import com.online.cms.cms.readBook.domain.ElectronBook;
 import com.online.cms.sys.log.accessLog.domain.AccessLog;
