@@ -1,9 +1,11 @@
 package com.online.cms.sys.login;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * 登录后台
@@ -28,12 +30,12 @@ public class LoginController {
 	 * 登录成功并进入后台管理页面
 	 * @return
 	 */
-	@RequestMapping("/loginManagentPage.html")
-	public String loginIn(HttpServletRequest request){
-		String user = request.getParameter("username");
-		String password = request.getParameter("password");
-		if (user.equals("admin" ) && password.equals("123")) {
+	@RequestMapping(value="/loginManagentPage.html",method=RequestMethod.POST)
+	public String loginIn(String username,String password,HttpSession session){
+		if (username.equals("admin" ) && password.equals("123")) {
 			// 登录成功进入后台管理页面
+			session.setAttribute("user", username);
+			session.setAttribute("password", password);
 			return "jsp/managePage/backstageManagePage";
 		}else{
 			//登录失败返回登录页面

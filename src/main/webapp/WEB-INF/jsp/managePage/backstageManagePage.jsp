@@ -20,6 +20,11 @@
 		var showUrl = getRootPath()+"/eBook/page/getEBooks.html"; 
 		obj.href = showUrl;
 	}
+	/* 添加公告 */
+	function showNotice(obj){
+		var showNotice = getRootPath()+"/sys/showSysNotice.html";
+		obj.href = showNotice;
+	}
 </script>
 <body>
 	<div class="top"></div>
@@ -43,7 +48,7 @@
 						<span></span>系统公告
 					</h4>
 					<div class="list-item none">
-						<a href=''>暂未开发</a> 
+						<a href='javascript:void(0)' onclick="showNotice(this)" target="content">公告栏</a> 
 					</div>
 				</li>
 				<li>

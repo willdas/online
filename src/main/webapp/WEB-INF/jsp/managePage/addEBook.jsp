@@ -23,7 +23,6 @@
 	margin: 0 auto;
 	margin-top: 15px;
 }
-
 .div-top {
 	margin-top: 10px;
 	margin-left: 15%;
@@ -65,22 +64,19 @@
 			<div class="form-group">
 				<label class="col-sm-2 control-label">作者</label>
 				<div class="col-sm-10">
-					<input class="form-control" id="author" type="text" name="author"
-						placeholder="本书作者">
+					<input class="form-control" id="author" type="text" name="author" placeholder="本书作者">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-2 control-label">价格</label>
 				<div class="col-sm-10">
-					<input class="form-control" id="price" type="text" name="price"
-						placeholder="本书价格">
+					<input class="form-control" id="price" type="text" name="price" placeholder="本书价格">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-2 control-label">购买</label>
 				<div class="col-sm-10">
-					<input class="form-control" id="buyLink" type="text" name="buyLink"
-						placeholder="购买地址">
+					<input class="form-control" id="buyLink" type="text" name="buyLink" placeholder="购买地址">
 				</div>
 			</div>
 			<div class="form-group">
@@ -98,15 +94,13 @@
 			<div class="form-group">
 				<label class="col-sm-2 control-label">日期</label>
 				<div class="col-sm-10">
-					<input class="form-control" id="publishDate" type="text" name="publishDate"
-						placeholder="请选择出版日期">
+					<input class="form-control" id="publishDate" type="text" name="publishDate" placeholder="请选择出版日期">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-2 control-label">描述</label>
 				<div class="col-sm-10">
-					<textarea class="form-control" id="describes" rows="3" name="describes"
-						placeholder="请输入本书的简介"></textarea>
+					<textarea class="form-control" id="describes" rows="3" name="describes" placeholder="请输入本书的简介"></textarea>
 				</div>
 			</div>
 			<div class="form-group">

@@ -77,7 +77,7 @@
 	   	      		<img src="../../resources/images/templatemo_image_01.jpg" alt="image" />
 	                <div class="product_info"> 
 	                	<p><span style="font-size: 12px;" th:text="${item.describes}">简介</span><a th:href="@{'/book/detail/'+(${item.id})+'.html'}">...更多</a></p>
-	                  	<h3>￥ <span th:text="${item.price}">价格</span></h3>
+	                  	<h3>￥ <span th:text="${item.price}">价格</span></h3> 
 	                    <div class="buy_now_button"><a th:href="@{${item.buyLink}}" target="_blank">立即购买</a></div>
 	                    <div class="detail_button"><a th:href="@{${item.pdfUrl}}" target="_blank">在线阅读</a></div>
 	                    <h3><span th:text="${#dates.format(item.publishDate,'yyyy-MM-dd')}"></span></h3>
