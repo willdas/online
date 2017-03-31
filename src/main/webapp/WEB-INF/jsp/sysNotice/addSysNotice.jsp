@@ -53,7 +53,8 @@
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
 					<button id="addSysNotice" class="btn btn-default">提交</button>&emsp;
-					<input id="reset" type="button" class="btn btn-default" value="清空"/>
+					<input id="reset" type="button" class="btn btn-default" value="清空"/>&emsp;
+					<button class="btn btn-default" onclick="javascript:history.back(-1);">返回</button>&emsp;
 				</div>
 			</div>
 		</form>

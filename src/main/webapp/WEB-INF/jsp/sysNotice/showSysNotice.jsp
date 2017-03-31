@@ -21,15 +21,15 @@
 	font-size: 25px;
 	color:black;
 }
-.add_class{
-	margin-bottom: 0.5%;
+#addBtn{
+	margin-bottom: 1%;
 	margin-left: 1%;
 }
 </style>
 </head>
 <body>
 	<h1 class="caption-class">网站公告</h1>
-	<input type="button" class="add_class" value="添加" onclick="addSysNotice();"/>
+	<button type="button" id="addBtn" class="btn btn-default" onclick="addSysNotice();">添加</button>
 	<table class="table table-bordered">
 		<thead>
 			<tr>

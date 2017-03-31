@@ -75,33 +75,4 @@
 </body>
 <script type="text/javascript" src="../../resources/js/bootstrap/bootstrap.js"></script>
 <script type="text/javascript" src="../../resources/js/bootstrap/bootstrap-select.js"></script>
-<%-- <script type="text/javascript">
-	$(function(){
-		$("#updateSysNatice").click(function(){
-			$.ajax({
-				type : "POST",
-				url : "<%=basePath%>sys/updateSysNotice.do",
-				data : {
-					"id" : $("#id").val(),
-					"type":$("#selectType").val(),
-					"publisher":$("#publisher").val(),
-					"releaseTime":$("#releaseTime").val(),
-					"noticeContent":$("#noticeContent").val()
-				},
-				success : function(data){
-					if(data == 1){
-						$("#message").html("修改成功!");
-					}else{
-						$("#message").html("修改失败!");
-					}
-				},
-				error:function(errorData){
-					console.log("状态码=="+errorData);
-					alert("网络连接失败");
-				}
-			});
-		});
-		
-	});
-</script> --%>
 </html>
