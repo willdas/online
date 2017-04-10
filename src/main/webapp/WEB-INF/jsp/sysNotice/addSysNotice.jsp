@@ -33,7 +33,7 @@
 <body>
 	<h3 class="h3-class">添加网站公告</h3>
 	<div class="div-top">
-		<form class="form-horizontal" role="form" action="<%=basePath%>sys/addSysNotice.html" method="post">
+		<form class="form-horizontal" role="form" action="<%=basePath%>sys/addSysNotice.do" method="post">
 			<div class="form-group">
 				  <label class="col-sm-2 control-label">类型</label>
 				  <div class="col-sm-10">

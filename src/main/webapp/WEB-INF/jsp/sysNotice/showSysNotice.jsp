@@ -50,7 +50,7 @@
 					<td><fmt:formatDate value="${item.releaseTime}" type="date" /></td>
 					<td>${item.noticeContent}</td>
 					<td>
-						<a href="<%=basePath%>sys/intoUpdateSysNotice/${item.id}.html">修改</a> 
+						<a href="<%=basePath%>sys/intoUpdateSysNotice/${item.id}.do">修改</a> 
 					</td>
 				</tr>
 			</c:forEach>
@@ -62,7 +62,7 @@
 <script type="text/javascript">
 	/* 添加网站公告 */  
 	function addSysNotice(){
-		window.location.href = getRootPath()+"/sys/intoAddSysNotice.html";
+		window.location.href = getRootPath()+"/sys/intoAddSysNotice.do";
 	}
 </script>
 </html>

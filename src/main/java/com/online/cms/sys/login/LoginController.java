@@ -28,7 +28,7 @@ public class LoginController {
 	 * 登录成功并进入后台管理页面
 	 * @return
 	 */
-	@RequestMapping(value="/loginManagentPage.html",method=RequestMethod.POST)
+	@RequestMapping(value="/loginManagentPage.do",method=RequestMethod.POST)
 	public String loginIn(String username,String password,HttpSession session){
 		if (username.equals("admin" ) && password.equals("123")) {
 			// 登录成功进入后台管理页面

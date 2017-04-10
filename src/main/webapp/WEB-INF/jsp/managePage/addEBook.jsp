@@ -33,7 +33,7 @@
 <body>
 	<h3 class="h3-class">添加电子书</h3>
 	<div class="div-top">
-		<form class="form-horizontal" role="form" action="<%=basePath%>eBook/addEBook.html" method="post" enctype="multipart/form-data">
+		<form class="form-horizontal" role="form" action="<%=basePath%>eBook/addEBook.do" method="post" enctype="multipart/form-data">
 			<div class="form-group">
 				<label class="col-sm-2 control-label">编号</label>
 				<div class="col-sm-10">

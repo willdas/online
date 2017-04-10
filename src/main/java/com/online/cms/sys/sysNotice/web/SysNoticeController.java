@@ -35,14 +35,14 @@ public class SysNoticeController {
 	 * 查找所有公告
 	 * @return
 	 */
-	@RequestMapping("/showSysNotice.html")
+	@RequestMapping("/showSysNotice.do")
 	public String getSysNotice(Map<String,Object> map){
 		List<SysNotice> sysNoticeList = sysNoticeService.findAll();
 		map.put("sysNoticeList",sysNoticeList);
 		return "jsp/sysNotice/showSysNotice";
 	}
 	
-	@RequestMapping("/intoAddSysNotice.html")
+	@RequestMapping("/intoAddSysNotice.do")
 	public String intoAddSysNotice(){
 		return "jsp/sysNotice/addSysNotice";
 	}
@@ -52,16 +52,16 @@ public class SysNoticeController {
 	 * @param sysNotice
 	 * @return
 	 */
-	@RequestMapping(value="/addSysNotice.html",method=RequestMethod.POST)
+	@RequestMapping(value="/addSysNotice.do",method=RequestMethod.POST)
 	public String addSysNotice(SysNotice sysNotice,HttpSession httpSession){
 		Object user = httpSession.getAttribute("user");
 		sysNotice.setReleaseTime(new Date());
 		sysNotice.setPublisher(String.valueOf(user));
 		sysNoticeService.addSysNotice(sysNotice);
-		return "redirect:/sys/showSysNotice.html";
+		return "redirect:/sys/showSysNotice.do";
 	}
 	
-	@RequestMapping("/intoUpdateSysNotice/{id}.html")
+	@RequestMapping("/intoUpdateSysNotice/{id}.do")
 	public String intoUpdateSysNotice(@PathVariable("id") Integer id,Model model){
 		SysNotice sysNotice = sysNoticeService.findSysNoticeById(id);
 		model.addAttribute("sysNotice", sysNotice);
@@ -74,12 +74,12 @@ public class SysNoticeController {
 	 * @param sysNotice
 	 * @return
 	 */
-	@RequestMapping(value="/updateSysNotice.html",method=RequestMethod.POST)
+	@RequestMapping(value="/updateSysNotice.do",method=RequestMethod.POST)
 	public String updateSysNotice(SysNotice sysNotice,HttpSession session){
 		Object attribute = session.getAttribute("user");
 		sysNotice.setPublisher(String.valueOf(attribute));
 		sysNotice.setReleaseTime(new Date());
 		sysNoticeService.updateSysNotice(sysNotice);
-		return "redirect:/sys/showSysNotice.html";
+		return "redirect:/sys/showSysNotice.do";
 	}
 }

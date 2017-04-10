@@ -38,7 +38,7 @@
 <body>
 	<h3 class="h3-class">修改公告</h3>
 	<div class="div-top">
-		<form action="<%=basePath%>sys/updateSysNotice.html" method="post">
+		<form action="<%=basePath%>sys/updateSysNotice.do" method="post">
 			<div class="form-horizontal" role="form">
 			<div class="form-group">
 				<label class="col-sm-2 control-label">编号</label>

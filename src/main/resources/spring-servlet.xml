@@ -48,9 +48,9 @@
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
-	<!-- 基于注释的事务，当注释中发现@Transactional时，使用id为“transactionManager”的事务管理器 -->
+	<!-- 基于注释的事务，当注释中发现@Transactional时，使用id为“transactionManager”的事务管理器 -->	
 	<tx:annotation-driven transaction-manager="transactionManager" />
-	
+
 	<!--JSP 视图解析 配置视图解析器，将ModelAndView及字符串解析为具体的页面 -->
 	<bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
         <property name="viewNames" value="jsp*"></property>

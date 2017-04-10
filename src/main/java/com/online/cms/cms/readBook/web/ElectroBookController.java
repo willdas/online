@@ -37,7 +37,7 @@ public class ElectroBookController {
 	 * 进入添加电子书页面
 	 * @return
 	 */
-	@RequestMapping("/intoAddEBookPage.html")
+	@RequestMapping("/intoAddEBookPage.do")
 	public String addEBookPage(){
 		return "jsp/managePage/addEBook";
 	}
@@ -49,7 +49,7 @@ public class ElectroBookController {
 	 * @param map
 	 * @return
 	 */
-	@RequestMapping("/page/getEBooks.html")
+	@RequestMapping("/page/getEBooks.do")
 	public String getEBook(Integer pageNum,Integer pageSize,Map<String,Object> map,HttpServletRequest request){
 		pageNum = pageNum == null ? 1 : pageNum;
 		pageSize = pageSize == null ? 10 : pageSize;
@@ -72,10 +72,10 @@ public class ElectroBookController {
 	 * 添加电子书
 	 * @return
 	 */
-	@RequestMapping("/addEBook.html")
+	@RequestMapping("/addEBook.do")
 	public String addEBook(ElectronBook eBook,@RequestParam MultipartFile[] files){
 		electronBookService.save(eBook,files);
-		return "redirect:/eBook/page/getEBooks.html";
+		return "redirect:/eBook/page/getEBooks.do";
 	}
 	
 	/**
@@ -83,7 +83,7 @@ public class ElectroBookController {
 	 * @param id
 	 */
 	@SuppressWarnings("unused")
-	@RequestMapping("/delEBook/{id}.html")
+	@RequestMapping("/delEBook/{id}.do")
 	public String delEBook(@PathVariable("id") String id){
 		String filePath = electronBookService.getEBookById(id).getPdfPath();
 		if(!filePath.equals(" ") || filePath != null || "null".equals(filePath)){
@@ -92,14 +92,14 @@ public class ElectroBookController {
 		}else{
 			electronBookService.delete(id); 
 		}
-		return "redirect:/eBook/page/getEBooks.html";
+		return "redirect:/eBook/page/getEBooks.do";
 	}
 	
 	/**
 	 * 进入修改电子书页面
 	 * @return
 	 */
-	@RequestMapping("/intoUpdateEBookPage/{id}.html")
+	@RequestMapping("/intoUpdateEBookPage/{id}.do")
 	public String intoUpdateEBookPage(@PathVariable("id") String id,Model model,HttpServletRequest request){
 		ElectronBook eBook = electronBookService.getEBookById(id);
 		model.addAttribute("publishDate",DateFormat.dateToString(eBook.getPublishDate()));
