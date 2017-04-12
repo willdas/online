@@ -56,7 +56,7 @@
 						      <option>JAVA</option>
 						      <option>HTML</option>
 						      <option>CSS</option>
-						      <option>JAVASCRIPPT</option>
+						      <option>JAVASCRIPT</option>
 						      <option>PHP</option>
 					   </select>
 				  </div>

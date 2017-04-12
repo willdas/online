@@ -52,7 +52,7 @@
 		</form>
 	</div>
 	<div class="copy-rights">
-		<p>Copyright &copy; 2015.Company name</p>
+		<p>Copyright © 2017&nbsp;onlineReading.net &nbsp;<a href="<%=basePath%>">返回首页</a></p>
 	</div>
 </body>
 </html>

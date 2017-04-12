@@ -6,21 +6,62 @@
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
 	
-	<!-- Shiro 安全过滤器 -->
-	<!-- <filter>
-		<filter-name>shiroFilter</filter-name>
-		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
-		开启异步处理
-		<async-supported>true</async-supported> 
+	<!-- Web容器加载顺序ServletContext-context-param-listener-filter-servlet -->
+	<!-- 指定Spring的配置文件 -->
+	<!-- 否则Spring 会默认从WEB-INF 寻找配置文件,contextConfigLocation属性是Spring内部固定的 -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:spring-servlet.xml</param-value>
+	</context-param>
+	
+	 <!-- 防止发生java.beans.Introspector内存泄露,应将它配置在ContextLoaderListener的前面 -->
+    <listener>  
+        <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>  
+    </listener>  
+      
+    <!-- 实例化Spring容器 -->  
+    <!-- 应用启动时,该监听器被执行,它会读取Spring相关配置文件,其默认会到WEB-INF中查找applicationContext.xml -->  
+    <listener>  
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>  
+    </listener>  
+    
+    <!-- 表单提交POST中文乱码解决方案统一字符编码为UTF-8 -->
+	<!-- forceEncoding默认为false,此时效果可大致理解为request.setCharacterEncoding("UTF-8") -->  
+    <!-- forceEncoding=true后,可大致理解为request.setCharacterEncoding("UTF-8")和response.setCharacterEncoding("UTF-8") -->
+	<filter>
+		<filter-name>setcharacter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
 		<init-param>
-			<param-name>targetFilterLifecycle</param-name>
-			<param-value>true</param-value>
+			<param-name>encoding</param-name>
+			<param-value>utf-8</param-value>
 		</init-param>
+		<init-param>  
+            <param-name>forceEncoding</param-name>  
+            <param-value>true</param-value>  
+        </init-param>  
 	</filter>
 	<filter-mapping>
-		<filter-name>shiroFilter</filter-name>
-		<url-pattern>*.do</url-pattern>
-	</filter-mapping> -->
+		<filter-name>setcharacter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<!-- 配置Shiro过滤器,先让Shiro过滤系统接收到的请求 -->  
+    <!-- 这里filter-name必须对应applicationContext.xml中定义的<bean id="shiroFilter"/> -->  
+    <!-- 使用[/*]匹配所有请求,保证所有的可控请求都经过Shiro的过滤 -->  
+    <!-- 通常会将此filter-mapping放置到最前面(即其他filter-mapping前面),以保证它是过滤器链中第一个起作用的 -->
+    <filter>
+    	<filter-name>shiroFilter</filter-name>
+    	<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    	<init-param>
+    		<!-- 该值缺省为false,表示生命周期由SpringApplicationContext管理,设置为true则表示由ServletContainer管理 -->
+    		<param-name>targetFilterLifecycle</param-name>
+    		<param-value>true</param-value>
+    	</init-param>
+    </filter>
+    <filter-mapping>
+    	<filter-name>shiroFilter</filter-name>
+    	<url-pattern>*.do</url-pattern>
+    </filter-mapping>
 	
 	<!--配置spring-MVC -->
 	<servlet>
@@ -28,7 +69,7 @@
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>classpath:spring-*.xml</param-value>
+			<param-value>classpath:spring-servlet.xml</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
@@ -40,19 +81,7 @@
 		<servlet-name>spring</servlet-name>
 		<url-pattern>*.html</url-pattern>
 	</servlet-mapping>
-	<!-- 表单提交POST中文乱码解决方案统一字符编码为UTF-8 -->
-	<filter>
-		<filter-name>setcharacter</filter-name>
-		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
-		<init-param>
-			<param-name>encoding</param-name>
-			<param-value>utf-8</param-value>
-		</init-param>
-	</filter>
-	<filter-mapping>
-		<filter-name>setcharacter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
+	
 	<!-- 404页面处理 -->
 	<error-page>
 	    <error-code>404</error-code>
@@ -63,4 +92,9 @@
 		<error-code>500</error-code>
 		<location>/resources/html/404.html</location>
 	</error-page>
+	<error-page>  
+        <exception-type>java.lang.Throwable</exception-type>  
+        <location>/resources/html/404.html</location>  
+    </error-page>
+
 </web-app>
