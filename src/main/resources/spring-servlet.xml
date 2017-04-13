@@ -89,6 +89,6 @@
 	<!-- 开启注解方式aop -->
 	<aop:aspectj-autoproxy />
 	
-	<import resource="spring-context-shiro.xml"/>
+	<import resource="spring-shiro.xml"/>
 
 </beans>

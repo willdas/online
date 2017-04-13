@@ -100,7 +100,7 @@ public class ElectroBookController {
 	 * @return
 	 */
 	@RequestMapping("/intoUpdateEBookPage/{id}.do")
-	public String intoUpdateEBookPage(@PathVariable("id") String id,Model model,HttpServletRequest request){
+	public String intoUpdateEBookPage(@PathVariable("id") String id,Model model){
 		ElectronBook eBook = electronBookService.getEBookById(id);
 		model.addAttribute("publishDate",DateFormat.dateToString(eBook.getPublishDate()));
 		model.addAttribute("eBook",eBook);

@@ -20,10 +20,10 @@
 	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
 		<!-- Shiro的核心安全接口，这个属性是必须的 -->
 		<property name="securityManager" ref="securityManager" />
-		<!-- 要求登录时的链接(可根据项目的URL进行替换) 非必要的属性,默认会自动寻找Web工程目录下"/login.jsp"页面 -->
-		<!-- <property name="loginUrl" value="/" /> -->
+		<!-- 没有登录的用户请求需要登录的页面时自动跳转到登录页面，可配置也可不配置 -->
+		 <property name="loginUrl" value="/eBookLogin/eb/loginManagement.html" />
 		<!-- 用户访问未对其授权的资源时,所显示的连接 -->  
-        <!-- 若想更明显的测试此属性可以修改它的值,如unauthor.jsp,然后用[玄玉]登录后访问/admin/listUser.jsp就看见浏览器会显示unauthor.jsp -->  
+        <!-- 没有权限默认跳转的页面-->  
         <!-- <property name="unauthorizedUrl" value="/"/>  --> 
 		<!-- 登录成功后要跳转的链接(本例中此属性用不到,因为登录成功后的逻辑在LoginController进行硬编码) -->
 		<!-- <property name="successUrl" value="/system/main"/> -->  
@@ -33,10 +33,10 @@
 		<property name="filterChainDefinitions">  
             <value>  
                 /eBookLogin**=anon  
-                /eBook**=authc  
-                /eBook/intoAddEBookPage=authc,perms[admin:add]  
-                /eBook/delEBook**=authc,perms[admin:delete]  
-                /eBook/intoUpdateEBookPage**=authc,perms[admin:edit]  
+                /eBook/**=authc,roles[admin]  
+                /eBook/intoAddEBookPage**=authc,perms[admin:add]  
+                /eBook/delEBook**=authc,perms[superManager:delete]  
+                /eBook/intoUpdateEBookPage**=authc,perms[admin:update]  
             </value>  
         </property>
 	</bean>
