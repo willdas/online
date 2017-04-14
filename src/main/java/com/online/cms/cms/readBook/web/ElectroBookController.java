@@ -73,8 +73,10 @@ public class ElectroBookController {
 	 * @return
 	 */
 	@RequestMapping("/addEBook.do")
-	public String addEBook(ElectronBook eBook,@RequestParam MultipartFile[] files){
-		electronBookService.save(eBook,files);
+	public String addEBook(ElectronBook eBook,@RequestParam MultipartFile[] files,HttpServletRequest request){
+		// 获取域名地址
+		String ipAddress = request.getScheme()+"://"+ request.getServerName() + "/"; 
+		electronBookService.save(eBook,files,ipAddress);
 		return "redirect:/eBook/page/getEBooks.do";
 	}
 	

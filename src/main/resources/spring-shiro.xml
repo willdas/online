@@ -24,7 +24,7 @@
 		 <property name="loginUrl" value="/eBookLogin/eb/loginManagement.html" />
 		<!-- 用户访问未对其授权的资源时,所显示的连接 -->  
         <!-- 没有权限默认跳转的页面-->  
-        <!-- <property name="unauthorizedUrl" value="/"/>  --> 
+        <property name="unauthorizedUrl" value="/resources/html/unauthorized.html"/>
 		<!-- 登录成功后要跳转的链接(本例中此属性用不到,因为登录成功后的逻辑在LoginController进行硬编码) -->
 		<!-- <property name="successUrl" value="/system/main"/> -->  
         <!-- 下面value值的第一个'/'代表的路径是相对于HttpServletRequest.getContextPath()的值来的 -->  
@@ -33,10 +33,10 @@
 		<property name="filterChainDefinitions">  
             <value>  
                 /eBookLogin**=anon  
-                /eBook/**=authc,roles[admin]  
-                /eBook/intoAddEBookPage**=authc,perms[admin:add]  
-                /eBook/delEBook**=authc,perms[superManager:delete]  
-                /eBook/intoUpdateEBookPage**=authc,perms[admin:update]  
+                /eBook/intoAddEBookPage/**=authc,roles[superManager,admin]  
+                /eBook/page/getEBooks/**=authc,roles[superManager,admin]  
+                /eBook/delEBook/**=authc,perms[delete]
+                /eBook/intoUpdateEBookPage/**=authc,perms[update]  
             </value>  
         </property>
 	</bean>

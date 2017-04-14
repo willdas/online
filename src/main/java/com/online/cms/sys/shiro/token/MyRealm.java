@@ -47,7 +47,6 @@ public class MyRealm extends AuthorizingRealm{
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
 		// 获取当前登录的用户名，等价于(String)principals.fromRealm(this.getName()).iterator().next();
 		String userName = (String)super.getAvailablePrincipal(principals);
-		System.out.println("currentUserName"+userName);
 		List<String> roleList = new ArrayList<String>();       // 存放所有角色
 		List<String> permissionList = new ArrayList<String>(); // 存放所有权限
 		List<UserRole> roles = userService.selectRolesByUserName(userName);  // 所有角色
@@ -64,7 +63,6 @@ public class MyRealm extends AuthorizingRealm{
 		}
 		System.out.println("roleList="+roleList.toString());
 		System.out.println("permissionList="+permissionList.toString());
-		
 		//为当前用户设置角色和权限
 		SimpleAuthorizationInfo simpleAuthorInfo = new SimpleAuthorizationInfo(); 
 		simpleAuthorInfo.addRoles(roleList);
