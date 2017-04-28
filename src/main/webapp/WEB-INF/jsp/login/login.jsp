@@ -16,11 +16,6 @@
 	content="Flat Dark Web Login Form Responsive Templates, Iphone Widget Template, Smartphone login forms,Login form, Widget Template, Responsive Templates, a Ipad 404 Templates, Flat Responsive Templates" />
 <link href="../../resources/css/login/style.css" rel='stylesheet'
 	type='text/css' />
-<link
-	href='http://fonts.useso.com/css?family=PT+Sans:400,700,400italic,700italic|Oswald:400,300,700'
-	rel='stylesheet' type='text/css'>
-<link href='http://fonts.useso.com/css?family=Exo+2' rel='stylesheet'
-	type='text/css'>
 <script src="../../resources/js/jquery/jquery-2.1.0.js"></script>
 </head>
 <body>

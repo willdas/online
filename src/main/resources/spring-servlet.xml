@@ -90,5 +90,5 @@
 	<aop:aspectj-autoproxy />
 	
 	<import resource="spring-shiro.xml"/>
-
+	
 </beans>
