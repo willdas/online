@@ -16,17 +16,17 @@
 <script type="text/javascript">
 	/* 添加电子书 */ 
 	function addEBook(obj){
-		var addUrl = getLocalhostPaht() + "/onlineRead/eBook/intoAddEBookPage.do";
+		var addUrl = getLocalhostPaht() + "/eBook/intoAddEBookPage.do";
 		obj.href = addUrl;
 	}
 	/* 显示电子书 */
 	function showEBook(obj){
-		var showUrl = getLocalhostPaht() + "/onlineRead/eBook/page/getEBooks.do"; 
+		var showUrl = getLocalhostPaht() + "/eBook/page/getEBooks.do"; 
 		obj.href = showUrl;
 	}
 	/* 添加公告 */
 	function showNotice(obj){
-		var showNotice = getLocalhostPaht() + "/onlineRead/sys/showSysNotice.do";
+		var showNotice = getLocalhostPaht() + "/sys/showSysNotice.do";
 		obj.href = showNotice;
 	}
 </script>
