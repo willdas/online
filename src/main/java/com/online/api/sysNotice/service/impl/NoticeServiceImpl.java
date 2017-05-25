@@ -1,5 +1,7 @@
 package com.online.api.sysNotice.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +24,7 @@ public class NoticeServiceImpl implements NoticeService{
 	 * 查询系统公告
 	 */
 	@Override
-	public SysNotice getSysNotice(String type){
+	public List<SysNotice> getSysNotice(String type){
 		return sysNoticeMapper.selectByType(type);
 	}
 

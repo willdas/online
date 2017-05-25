@@ -1,5 +1,7 @@
 package com.online.api.sysNotice.service;
 
+import java.util.List;
+
 import com.online.cms.sys.sysNotice.domain.SysNotice;
 
 /**
@@ -14,5 +16,5 @@ public interface NoticeService {
 	 * @return
 	 * @throws Exception
 	 */
-	SysNotice getSysNotice(String type);
+	List<SysNotice> getSysNotice(String type);
 }
