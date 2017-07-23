@@ -18,7 +18,7 @@ public interface ElectronBookService{
 	
 	public List<ElectronBook> eBooksList();
 	
-	public int save(ElectronBook eBook,MultipartFile[] files);
+	public int save(ElectronBook eBook,MultipartFile[] files,String ipAddress);
 	
 	public int update(ElectronBook eBook);
 	

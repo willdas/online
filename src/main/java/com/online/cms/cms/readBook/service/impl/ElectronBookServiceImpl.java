@@ -37,12 +37,12 @@ public class ElectronBookServiceImpl implements ElectronBookService{
 	 * 添加电子书
 	 */
 	@Override
-	public int save(ElectronBook eBook,MultipartFile[] files) {
+	public int save(ElectronBook eBook,MultipartFile[] files,String ipAddress) {
 		if(files != null && files.length > 0){
 			for (int i = 0; i < files.length; i++) {
 				MultipartFile file = files[i];
 				if (!file.isEmpty()) {
-					saveFile(eBook,file);
+					saveFile(eBook,file,ipAddress);
 				}
 			}
 		}
@@ -52,24 +52,26 @@ public class ElectronBookServiceImpl implements ElectronBookService{
 	/**
 	 * 上传电子书
 	 */
-	public void saveFile(ElectronBook eBook,MultipartFile file){
+	public void saveFile(ElectronBook eBook,MultipartFile file,String ipAddress){
 		// 获取文件名称
 		String fileType = file.getContentType();
 		String fileName = file.getOriginalFilename();
+		
+		String imageUrl = ipAddress + fileName;
 		// 创建存储位置
 		String filePath = "";
 		// 存放文件的位置
 		String path = "";
 		if (fileType.startsWith("image")) {
-			filePath = File.separator + "root" + File.separator + "file" + File.separator + "images" + File.separator;
+			filePath =  File.separator + "files" + File.separator + "images" + File.separator;
 			path = filePath + fileName;
 			eBook.setImagePath(path);
-			eBook.setImageUrl("http://127.0.0.1:8080" + path);
+			eBook.setImageUrl(imageUrl);
 		}else if (fileType.startsWith("application")) {
-			filePath = File.separator + "root" + File.separator + "file" + File.separator + "pdfs" + File.separator;
+			filePath = File.separator + "files" + File.separator + "pdfs" + File.separator;
 			path = filePath + fileName;
 			eBook.setPdfPath(path);
-			eBook.setPdfUrl("http://127.0.0.1:8080" + path);
+			eBook.setPdfUrl(imageUrl);
 		}
 		try {
 			// 创建文件夹
@@ -112,7 +114,7 @@ public class ElectronBookServiceImpl implements ElectronBookService{
 	 */
 	@Override
 	public List<ElectronBook> findAll(){
-		return electronBookMapper.findAll();
+		return this.electronBookMapper.findAll();
 	}
 
 	
