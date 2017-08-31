@@ -1,9 +1,7 @@
 package com.online.cms.cms.readBook.service;
 
-import java.util.List;
-
 import org.springframework.web.multipart.MultipartFile;
-
+import com.commons.baseservice.BaseService;
 import com.online.cms.cms.readBook.domain.ElectronBook;
 
 
@@ -12,18 +10,7 @@ import com.online.cms.cms.readBook.domain.ElectronBook;
  * @author willdas
  *
  */
-public interface ElectronBookService{
+public interface ElectronBookService extends BaseService<ElectronBook, String>{
 	
-	public ElectronBook getEBookById(String id);
-	
-	public List<ElectronBook> eBooksList();
-	
-	public int save(ElectronBook eBook,MultipartFile[] files,String ipAddress);
-	
-	public int update(ElectronBook eBook);
-	
-	public int delete(String id);
-
-	public List<ElectronBook> findAll();
-	
+	public int insertElectronBook(ElectronBook eBook,MultipartFile[] files,String ipAddress);
 }

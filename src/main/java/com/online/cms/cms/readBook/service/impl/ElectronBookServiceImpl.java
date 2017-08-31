@@ -10,6 +10,8 @@ import org.springframework.web.multipart.MultipartFile;
 import com.online.cms.cms.readBook.dao.ElectronBookMapper;
 import com.online.cms.cms.readBook.domain.ElectronBook;
 import com.online.cms.cms.readBook.service.ElectronBookService;
+import com.commons.basemapper.BaseMapper;
+import com.commons.baseservice.BaseServiceImpl;
 import com.commons.util.FileUtil;
 
 /**
@@ -20,24 +22,21 @@ import com.commons.util.FileUtil;
 
 @Service
 @Transactional
-public class ElectronBookServiceImpl implements ElectronBookService{
+public class ElectronBookServiceImpl extends BaseServiceImpl<ElectronBook, String> implements ElectronBookService{
 
 	@Autowired
 	private ElectronBookMapper electronBookMapper;
-	
-	/**
-	 * 查看所有电子书(分页)
-	 */
-	@Override
-	public List<ElectronBook> eBooksList() {
-		return null;
-	}
 
+	@Override
+	protected BaseMapper<ElectronBook, String> baseMapper() {
+		return electronBookMapper;
+	}
+	
 	/**
 	 * 添加电子书
 	 */
 	@Override
-	public int save(ElectronBook eBook,MultipartFile[] files,String ipAddress) {
+	public int insertElectronBook(ElectronBook eBook,MultipartFile[] files,String ipAddress) {
 		if(files != null && files.length > 0){
 			for (int i = 0; i < files.length; i++) {
 				MultipartFile file = files[i];
@@ -56,7 +55,6 @@ public class ElectronBookServiceImpl implements ElectronBookService{
 		// 获取文件名称
 		String fileType = file.getContentType();
 		String fileName = file.getOriginalFilename();
-		
 		String imageUrl = ipAddress + fileName;
 		// 创建存储位置
 		String filePath = "";
@@ -84,38 +82,5 @@ public class ElectronBookServiceImpl implements ElectronBookService{
 			e.printStackTrace();
 		}
 	}
-	
-	/**
-	 * 更新电子书
-	 */
-	@Override
-	public int update(ElectronBook eBook) {
-		return electronBookMapper.updateByPrimaryKey(eBook);
-	}
 
-	/**
-	 * 删除电子书
-	 */
-	@Override
-	public int delete(String id) {
-		return electronBookMapper.deleteByPrimaryKey(id);
-	}
-
-	/**
-	 * 查找单个电子书
-	 */
-	@Override
-	public ElectronBook getEBookById(String id) {
-		return electronBookMapper.selectByPrimaryKey(id);
-	}
-
-	/**
-	 * 查找所有电子书
-	 */
-	@Override
-	public List<ElectronBook> findAll(){
-		return this.electronBookMapper.findAll();
-	}
-
-	
 }

@@ -76,7 +76,7 @@ public class ElectroBookController {
 	public String addEBook(ElectronBook eBook,@RequestParam MultipartFile[] files,HttpServletRequest request){
 		// 获取域名地址
 		String ipAddress = request.getScheme()+"://"+ request.getServerName() + "/"; 
-		electronBookService.save(eBook,files,ipAddress);
+		electronBookService.insertElectronBook(eBook,files,ipAddress);
 		return "redirect:/eBook/page/getEBooks.do";
 	}
 	
@@ -87,12 +87,12 @@ public class ElectroBookController {
 	@SuppressWarnings("unused")
 	@RequestMapping("/delEBook/{id}.do")
 	public String delEBook(@PathVariable("id") String id){
-		String filePath = electronBookService.getEBookById(id).getPdfPath();
+		String filePath = electronBookService.selectByPrimaryKey(id).getPdfPath();
 		if(!filePath.equals(" ") || filePath != null || "null".equals(filePath)){
 			FileUtil.deleteFile(new File("H:"+filePath));
-			electronBookService.delete(id);
+			electronBookService.deleteByPrimaryKey(id);
 		}else{
-			electronBookService.delete(id); 
+			electronBookService.deleteByPrimaryKey(id); 
 		}
 		return "redirect:/eBook/page/getEBooks.do";
 	}
@@ -103,7 +103,7 @@ public class ElectroBookController {
 	 */
 	@RequestMapping("/intoUpdateEBookPage/{id}.do")
 	public String intoUpdateEBookPage(@PathVariable("id") String id,Model model){
-		ElectronBook eBook = electronBookService.getEBookById(id);
+		ElectronBook eBook = electronBookService.selectByPrimaryKey(id);
 		model.addAttribute("publishDate",DateFormat.dateToString(eBook.getPublishDate()));
 		model.addAttribute("eBook",eBook);
 		return "jsp/managePage/editEBook";
@@ -115,6 +115,6 @@ public class ElectroBookController {
 	@RequestMapping("/updateEBook.do")
 	@ResponseBody
 	public int update(ElectronBook eBook){
-		return electronBookService.update(eBook);
+		return electronBookService.updateByPrimaryKey(eBook);
 	}
 }
