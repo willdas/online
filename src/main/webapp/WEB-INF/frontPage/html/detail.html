@@ -8,8 +8,9 @@
 <link href="../../resources/css/book/templatemo_style.css" rel="stylesheet" type="text/css" />
 <style type="text/css">
 .span_back{
-	margin-left: 55%;
+	left: 55%;
 	cursor:pointer;
+	float:right;
 }
 ul li{
 	list-style: none;
@@ -50,12 +51,15 @@ ul li{
             </div>
         </div>
         <div id="templatemo_content_right" class="templatemo_content_right_detail" >
-        	<h1><span th:text="${EBook.bookName}"></span>&ensp;(<span th:text="${EBook.author}">作者</span>)<span class="span_back" onclick="javascript:history.go(-1);">返回</span></h1>
+        	<h1><span th:text="${EBook.bookName}"></span>&ensp;<span class="span_back" onclick="javascript:history.go(-1);">返回</span></h1>
             <div class="image_panel"><img th:src="@{${EBook.imageUrl}}" alt="CSS Template" width="100" height="150" /></div>
           	<ul>
+          		<li>作者:<span th:text="${EBook.author}"></span></li>
 	            <li>出版日期:&ensp;<span th:text="${#dates.format(EBook.publishDate,'yyyy-MM-dd')}"></span></li>
                 <li>国际标准书号ISBN:&ensp;<span th:text="${EBook.id}"></span></li>
+                
             </ul>
+            
            	<span>内容简介:</span><br/>
            		<p th:text="${EBook.describes}"></p><br />
         </div>
