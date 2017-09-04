@@ -1,9 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-<%
-	String path = request.getContextPath();
-	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,14 +36,14 @@
 		<div class="avtar">
 			<img src="../../resources/images/avtar.png" />
 		</div>
-		<form action="<%=basePath%>eBookLogin/loginManagentPage.do" method="post">
+		<form action="../../eBookLogin/loginManagentPage.do" method="post">
 			<input type="text" name="username" class="text" value="用户名" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '用户名';}">
 			<input type="password" name="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
 			<input type="submit" value="登录">
 		</form>
 	</div>
 	<div class="copy-rights">
-		<p>Copyright © 2017&nbsp;onlineReading.net &nbsp;<a href="<%=basePath%>">返回首页</a></p>
+		<p>Copyright © 2017&nbsp;onlineReading.net &nbsp;<a href="htts://www.onlineread.net">返回首页</a></p>
 	</div>
 </body>
 </html>

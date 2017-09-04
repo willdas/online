@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-<%
-	String path = request.getContextPath();
-	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
+
 <!DOCTYPE>
 <html>
 <head>
@@ -40,7 +37,7 @@
 				<li><a href="">admi</a></li>
 				<li><a href="">修改密码</a></li>
 				<li><a href="">设置</a></li>
-				<li><a href="<%=basePath%>eBookLogin/loginout.do">退出</a></li>
+				<li><a href="../../eBookLogin/loginout.do">退出</a></li>
 			</ul>
 		</div>
 	</div>
