@@ -18,6 +18,8 @@ public interface SysNoticeMapper{
     int insertSelective(SysNotice record);
 
     SysNotice selectByPrimaryKey(Integer id);
+    
+    List<SysNotice> selectByType(String type);
 
     int updateByPrimaryKeySelective(SysNotice record);
 
